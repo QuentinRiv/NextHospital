@@ -1,0 +1,60 @@
+.login-container {
+    max-width: 500px;
+    margin: 5rem auto;
+    padding: 2.5rem;
+    box-shadow: var(--box-shadow);
+    border-radius: 10px;
+    background: var(--green);
+}
+
+.login-container h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: white;
+    font-size: 3rem;
+}
+
+.login-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 1rem;
+    padding-left: 3rem;
+    font-size: 1.7rem;
+    border-radius: 5px;
+    border: 2px solid var(--green);
+}
+
+.form-group .icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: var(--green);
+    font-size: 1.5rem;
+}
+
+.btn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.7rem;
+    border-radius: 5px;
+    border: 2px solid var(--green);
+    background: var(--green);
+    color: white;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: white;
+    color: var(--green);
+}

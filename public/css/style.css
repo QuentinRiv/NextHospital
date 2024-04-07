@@ -316,13 +316,13 @@ section:nth-child(even){
 }
 
 
-.doctors .box-container{
+.patients .box-container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     gap:2rem;
 }
 
-.doctors .box-container .box{
+.patients .box-container .box{
     text-align: center;
     background: #fff;
     border: var(--border);
@@ -330,7 +330,7 @@ section:nth-child(even){
     padding: 2rem;
 }
 
-.doctors .box-container img{
+.patients .box-container img{
     height: 20rem;
     border: var(--border);
     border-radius: .5rem;
@@ -339,21 +339,21 @@ section:nth-child(even){
 
 }
 
-.doctors .box-container .box h3{
+.patients .box-container .box h3{
     color: var(--black);
     font-size: 2.5rem;
 }
 
-.doctors .box-container .box span{
+.patients .box-container .box span{
     color: var(--green);
     font-size: 1.5rem;
 }
 
-.doctors .box-container .box share{
+.patients .box-container .box share{
     padding-top: 2rem;
 }
 
-.doctors .box-container .box a{
+.patients .box-container .box a{
     height: 5rem;
     width: 5rem;
     line-height: 4.5rem;
@@ -364,7 +364,7 @@ section:nth-child(even){
     margin: .3rem;
 }
 
-.doctors .box-container .box a:hover{
+.patients .box-container .box a:hover{
     background-color: var(--green);
     color: #fff;
     box-shadow: var(--box-shadow);
