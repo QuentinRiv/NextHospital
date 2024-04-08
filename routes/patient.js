@@ -3,7 +3,7 @@ const path = require('path'); // Assurez-vous que cette ligne est décommentée
 const router = express.Router();
 
 const Prescription = require('../models/Prescription');
-const Patient = require('../models/Patient');
+const patientCtrl = require('../controllers/patient');
 
 router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
@@ -29,31 +29,8 @@ router.post('/prescriptions', (req, res) => {
   });
 
   // Exemple pour créer un nouvel utilisateur
-router.post('/patients', (req, res) => {
-    const newpatient = new Patient({
-      patientname: req.body.patientname,
-      password: req.body.password, // Vous devriez hasher les mots de passe avant de les stocker !
-      email: req.body.email
-    });
-  
-    newpatient.save()
-      .then(patient => res.status(201).send(patient))
-      .catch(err => res.status(500).send("Erreur lors de la création de l'utilisateur : " + err.message));
-  });
-  
-  router.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'views', 'login.html'));
-});
-
-
-router.get('/patients', (req, res) => {
-    Patient.find({}).then(patients => {
-        res.render('patients', { patients: patients });
-    }).catch(err => {
-        console.error(err);
-        res.status(500).send('Erreur lors de la récupération des patients');
-    });
-});
+router.post('/patient', patientCtrl.createPatient);
+router.get('/patients', patientCtrl.getPatients);
 
 
 

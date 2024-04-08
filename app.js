@@ -19,9 +19,11 @@ app.set('views', path.join(__dirname, 'views')); // Assurez-vous que ce chemin m
 
 
 // Route optionnelle pour servir index.html en tant que page d'accueil
-const patientRoutes = require('./routes/patientRoutes');
+const patientRoutes = require('./routes/patient');
+const userRoutes = require('./routes/user');
 
 app.use('/', patientRoutes);
+app.use('/auth', userRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
