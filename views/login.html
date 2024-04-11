@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
-    <div class="login-container">
+    <div class="login-container" id="loginForm">
         <h1 class="heading">Connexion</h1>
-        <form action="/process-login" method="POST" class="login-form">
+        <form action="/auth/login" method="POST" class="login-form">
             <div class="form-group">
                 <i class="fa fa-user icon"></i>
                 <input type="email" id="email" name="email" placeholder="Email" required>
@@ -24,4 +24,7 @@
         </form>
     </div>
 </body>
+
+<script src="/js/login.js"></script>
+
 </html>

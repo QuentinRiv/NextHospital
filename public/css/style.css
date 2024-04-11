@@ -262,6 +262,9 @@ section:nth-child(even){
     box-shadow: var(--box-shadow);
     border: var(--border);
     padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .services .box-container .box i{
@@ -280,6 +283,11 @@ section:nth-child(even){
     color: var(--light-color);
     font-size: 1.4rem;
     line-height: 2;
+}
+
+.services .box-container .box a.btn {
+    align-self: flex-end;
+    margin-top: auto;
 }
 
 .about .row {

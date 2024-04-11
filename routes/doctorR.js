@@ -5,7 +5,7 @@ const router = express.Router();
 const auth = require('../middleware/auth');
 
 const Prescription = require('../models/PrescriptionM');
-const patientCtrl = require('../controllers/patientC');
+const doctorCtrl = require('../controllers/doctorC');
 
 router.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'views', 'index.html'));
@@ -20,7 +20,7 @@ router.get('/prescriptions', (req, res) => {
 // Exemple pour créer une nouvelle prescription
 router.post('/prescriptions', (req, res) => {
     const newPrescription = new Prescription({
-      patientName: req.body.patientName,
+      doctorName: req.body.doctorName,
       doctorName: req.body.doctorName,
       medicationDetails: req.body.medicationDetails
     });
@@ -31,10 +31,10 @@ router.post('/prescriptions', (req, res) => {
   });
 
   // Exemple pour créer un nouvel utilisateur
-router.post('/new', patientCtrl.createPatient);
-router.get('/patients', auth.requireAuth, patientCtrl.getPatients);
-router.get('/index', auth.requireAuth, patientCtrl.home);
-router.get('/patient', auth.requireAuth, patientCtrl.patientPage);
+router.post('/new', doctorCtrl.createDoctor);
+router.get('/doctors', auth.requireAuth, doctorCtrl.getDoctors);
+router.get('/index', auth.requireAuth, doctorCtrl.home);
+router.get('/doctor', auth.requireAuth, doctorCtrl.doctorPage);
 
 
 
