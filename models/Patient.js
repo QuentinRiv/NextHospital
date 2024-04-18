@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const uniqueValidator = require('mongoose-unique-validator');
 
 const PatientSchema = new Schema({
-  patientName: { type: String, required: true, unique: true },
+  name: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   assignedDoctor: { 
@@ -11,6 +11,7 @@ const PatientSchema = new Schema({
     ref: 'Doctor', // Assurez-vous que 'Doctor' correspond au nom de votre modèle
     required: true 
   },
+  image: { type: String, required: false }
   // Vous pouvez ajouter d'autres champs selon vos besoins
 });
 

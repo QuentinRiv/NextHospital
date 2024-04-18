@@ -20,12 +20,14 @@ app.set('views', path.join(__dirname, 'views')); // Assurez-vous que ce chemin m
 
 
 // Route optionnelle pour servir index.html en tant que page d'accueil
-const patientRoutes = require('./routes/patient');
-const doctorRoutes = require('./routes/doctorR');
-const userRoutes = require('./routes/user');
+const patientRoutes = require('./routes/patientRoute');
+const doctorRoutes = require('./routes/doctorRoute');
+const userRoutes = require('./routes/userRoute');
+const consultationRoutes = require('./routes/apptRoute');
 app.use('/patient', patientRoutes);
 app.use('/doctor', doctorRoutes);
 app.use('/auth', userRoutes);
+app.use('/consultation', consultationRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
