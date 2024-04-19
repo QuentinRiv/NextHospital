@@ -33,7 +33,7 @@ router.post('/prescriptions', (req, res) => {
   // Exemple pour créer un nouvel utilisateur
 router.post('/new', patientCtrl.create);
 router.get('/patients', auth.requireAuth, patientCtrl.getPatients);
-router.get('/index', auth.requireAuth, patientCtrl.home);
+router.get('/getInfo', auth.requireAuth, patientCtrl.getInfo);
 router.get('/main', auth.requireAuth, patientCtrl.patientPage);
 router.get('/random', patientCtrl.random)
 

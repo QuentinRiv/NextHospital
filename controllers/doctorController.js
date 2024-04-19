@@ -47,8 +47,8 @@ exports.getDoctors = (req, res) => {
   });
 };
 
-exports.home = (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'views', 'index.html'));
+exports.getinfo = (req, res) => {
+  
 };
 
 exports.doctorPage = (req, res) => {
@@ -110,3 +110,37 @@ exports.random = (req, res) => {
   res.status(200).send("Tout bon ! ");
 
 };
+
+
+exports.getInfo = async (req, res) => {
+  const key = req.query.key;
+  const value = req.query.value;
+  if (value) {
+      try {
+          // Correction de la valeur pour remplacer '%20' par des espaces
+          const adjustedValue = value.replace(/%20/g, " ");
+          // Assumons que vous cherchez par 'name', corriger la requête pour utiliser la clé correcte
+          const doctor = await Doctor.findOne({ [key]: value });
+
+          if (doctor) {
+              console.log(doctor);
+              res.status(202).json({
+                  id: doctor._id,
+                  email: doctor.email,
+                  name: doctor.name,
+                  image: doctor.image || "no image so far"
+              });
+          } else {
+              // Aucun utilisateur trouvé avec ce nom
+              res.status(404).json({ message: "Aucun doctor trouvé avec ce nom." });
+          }
+      } catch (error) {
+          // Gestion des erreurs de la requête à la base de données
+          console.error('Erreur lors de la recherche du doctor:', error);
+          res.status(500).json({ message: "Erreur interne du serveur lors de la recherche du doctor." });
+      }
+  } else {
+      res.status(400).json({ message: "Aucune valeur spécifiée pour la recherche." });
+  }
+};
+

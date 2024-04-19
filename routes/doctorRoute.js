@@ -33,8 +33,8 @@ router.post('/prescriptions', (req, res) => {
   // Exemple pour créer un nouvel utilisateur
 router.post('/new', doctorCtrl.create);
 router.get('/doctors', auth.requireAuth, doctorCtrl.getDoctors);
-router.get('/index', auth.requireAuth, doctorCtrl.home);
-router.get('/doctor', auth.requireAuth, doctorCtrl.doctorPage);
+router.get('/getinfo', doctorCtrl.getinfo);
+router.get('/main', auth.requireAuth, doctorCtrl.doctorPage);
 router.get('/random', doctorCtrl.random);
 
 

@@ -135,3 +135,38 @@ exports.random = (req, res) => {
   res.status(200).send("Tout bon ! ");
 
 };
+
+
+exports.getInfo = async (req, res) => {
+  const key = req.query.key;
+  const value = req.query.value;
+  if (value) {
+      try {
+          // Correction de la valeur pour remplacer '%20' par des espaces
+          const adjustedValue = value.replace(/%20/g, " ");
+          // Assumons que vous cherchez par 'name', corriger la requête pour utiliser la clé correcte
+          const patient = await Patient.findOne({ [key]: value });
+
+          if (patient) {
+              console.log(patient);
+              res.status(202).json({
+                  id: patient._id,
+                  email: patient.email,
+                  name: patient.name,
+                  assignedDoctor: patient.assignedDoctor,
+                  image: patient.image || "no image so far",
+              });
+          } else {
+              // Aucun utilisateur trouvé avec ce nom
+              res.status(404).json({ message: "Aucun patient trouvé avec ce nom." });
+          }
+      } catch (error) {
+          // Gestion des erreurs de la requête à la base de données
+          console.error('Erreur lors de la recherche du patient:', error);
+          res.status(500).json({ message: "Erreur interne du serveur lors de la recherche du patient." });
+      }
+  } else {
+      res.status(400).json({ message: "Aucune valeur spécifiée pour la recherche." });
+  }
+};
+

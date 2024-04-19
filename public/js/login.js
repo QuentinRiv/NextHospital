@@ -23,7 +23,14 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
             console.log('*-*-*'  + localStorage.getItem('token'));
             // Redirection vers /index après la réussite de l'authentification
             // next();
-            location.replace('/index');
+            if (data.profileType == 'Patient') {
+                location.replace('/patient/main');
+            }
+            if (data.profileType == 'Doctor') {
+                location.replace('/doctor/main');
+            }
+            console.log("********************NON")
+
         } else {
             throw new Error('Token non reçu');
         }
