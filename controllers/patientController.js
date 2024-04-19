@@ -13,7 +13,7 @@ exports.create = async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
 
     // Recherche du docteur
-    const doc = await Doctor.findOne({ 'doctorName': req.body.assignedDoctor });
+    const doc = await Doctor.findOne({ 'name': req.body.assignedDoctor });
     if (!doc) {
       return res.status(404).send("Erreur : docteur non trouvé !");
     }
@@ -70,7 +70,7 @@ exports.random = (req, res) => {
     try {
       const doctors = await Doctor.find({});
       const randomDoctor = doctors[Math.floor(Math.random() * doctors.length)];
-      return randomDoctor.doctorName;
+      return randomDoctor.name;
     } catch (error) {
       console.error('Failed to retrieve doctor IDs:', error);
       return null;

@@ -14,10 +14,10 @@ const AppointmentSchema = new Schema({
       ref: 'Patient', // Assurez-vous que 'Patient' correspond au nom de votre modèle
       required: true 
     },
-    categorie: { type: String, required: true},
+    category: { type: String, required: true},
     info: { type: String, required: false }
     // Vous pouvez ajouter d'autres champs selon vos besoins
   });
   
-  module.exports = mongoose.model('Consultation', AppointmentSchema);
+  module.exports = mongoose.model('Appointment', AppointmentSchema);
   

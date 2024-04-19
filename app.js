@@ -23,13 +23,18 @@ app.set('views', path.join(__dirname, 'views')); // Assurez-vous que ce chemin m
 const patientRoutes = require('./routes/patientRoute');
 const doctorRoutes = require('./routes/doctorRoute');
 const userRoutes = require('./routes/userRoute');
-const consultationRoutes = require('./routes/apptRoute');
+const appmtRoutes = require('./routes/appmtRoute');
 app.use('/patient', patientRoutes);
 app.use('/doctor', doctorRoutes);
 app.use('/auth', userRoutes);
-app.use('/consultation', consultationRoutes);
+app.use('/appointment', appmtRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+});
+
+
+app.get('*', function(req, res){
+  res.sendFile(path.join(__dirname, '.', 'views', 'error404.html'));
 });
