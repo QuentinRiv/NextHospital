@@ -1,18 +1,19 @@
-const jwt = require('jsonwebtoken');
+import pkg from 'jsonwebtoken';
+const { verify } = pkg;
  
-exports.requireAuth = (req, res, next) => {
+export function requireAuth(req, res, next) {
 
     const token = req.cookies.jwt;
-    console.log("\nToken = " + token);
 
     if (token) {
-        jwt.verify(token, 'RANDOM_TOKEN_SECRET', (err, decodedToken) => {
+        verify(token, 'RANDOM_TOKEN_SECRET', (err, decodedToken) => {
             if (err) {
                 console.log("\nErreur : " + err.message);
                 res.redirect('/auth/connect');
             }
             else {
-                console.log(decodedToken);
+                console.log("Token décodé : ", decodedToken);
+                req.user = decodedToken.userId;
                 next();
             }
         } );
@@ -21,4 +22,4 @@ exports.requireAuth = (req, res, next) => {
         res.redirect('/auth/connect');
     }
    
-};
+}

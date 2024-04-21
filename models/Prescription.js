@@ -1,6 +1,4 @@
-// models/Prescription.js
-const mongoose = require('mongoose');
-
+import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const PrescriptionSchema = new Schema({
@@ -11,4 +9,4 @@ const PrescriptionSchema = new Schema({
 });
 
 // Exporter le modèle
-module.exports = mongoose.model('Prescription', PrescriptionSchema);
+export default mongoose.model('Prescription', PrescriptionSchema);

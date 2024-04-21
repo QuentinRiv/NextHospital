@@ -19,11 +19,11 @@
 
         <nav class="navbar">
             <a href="#home">Home</a>
-            <a href="#services">Services</a>
-            <a href="#about">About</a>
-            <a href="#doctor">Doctor</a>
-            <a href="#book">Book</a>
-            <a href="#review">Review</a>
+            <a href="#outils">Outils</a>
+            <a href="#consultation">Consultation</a>
+            <a href="#rendezvous">RDV</a>
+            <a href="#document">Documents</a>
+            <!-- <a href="#review">Review</a> -->
             <a href="#blogs">Blogs</a>
         </nav>
 
@@ -82,9 +82,9 @@
 <!-- icon section end -->
 
 
-<!-- services section start -->
+<!-- outils section start -->
 
-<section class="services" id="services">
+<section class="outils" id="outils">
     <h1 class="heading"> nos <span>outils</span></h1>
 
     <div class="box-container">
@@ -133,121 +133,74 @@
         
     </div>
 </section>
-<!-- services section end -->
+<!-- outils section end -->
 
 <!-- patient section start -->
-<section class="patients" id="patient">
+<section class="consultation" id="consultation">
 
     <h1 class="heading"> Consultations <span>précédentes</span></h1>
 
     <div class="box-container">
 
-        <div class="box">
-            <img src="/image/doc.png" alt="">
-            <h3>Jean Bonbeurre</h3>
-            <span>Expert doctor</span>
-            <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
+        <% for (var i = 0; i < 3; i++) { %>
+            <div class="box">
+                <img src="/image/<%= consultations[i].doctorImg%>" alt="">
+                <h3><%= consultations[i].doctor%></h3>
+                <span><%= consultations[i].category%></span>
+                <div class="share">
+                    <a href="#" class="fa-solid fa-calendar-days"></a>
+                    <a href="#" class="fa-solid fa-user-doctor"></a>
+                    <a href="#" class="fa-solid fa-phone"></a>
+                </div>
             </div>
-        </div>
+        <% } %>
 
         <div class="box">
-            <img src="/image/doc.png" alt="">
-            <h3>Jean Bonbeurre</h3>
-            <span>Expert doctor</span>
-            <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
+            <a href="/patient/allconsultations">
+                <img src="/image/seemore.svg" alt="Voir plus">
+            </a>
+            <h3>Voir plus</h3>
+            <span>123 autres consultations</span>
         </div>
+        
 
-        <div class="box">
-            <img src="/image/doc.png" alt="">
-            <h3>Jean Bonbeurre</h3>
-            <span>Expert doctor</span>
-            <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-        </div>
-
-        <div class="box">
-            <img src="/image/doc.png" alt="">
-            <h3>Jean Bonbeurre</h3>
-            <span>Expert doctor</span>
-            <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-        </div>
-
-        <div class="box">
-            <img src="/image/doc.png" alt="">
-            <h3>Jean Bonbeurre</h3>
-            <span>Expert doctor</span>
-            <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-        </div>
-
-        <div class="box">
-            <img src="/image/doc.png" alt="">
-            <h3>Jean Bonbeurre</h3>
-            <span>Expert doctor</span>
-            <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-        </div>
     </div>
 
 </section>
-<!-- patient section end -->
+<!-- consultation section end -->
 
-<!-- booking section start -->
+<!-- rendezvous section start -->
 
-<section class="book" id="book">
+<section class="rendezvous" id="rendezvous">
 
-    <h1 class="heading"> <span>book</span> now </h1>
+    <h1 class="heading"> <span>Prenez</span> rendez-vous </h1>
 
-    <div class="row">
+    <div class="row" id="bookingForm">
 
         <div class="image">
-            <img src="/image/rdv.png" alt="">
+            <img src="/image/rdvd.jpg" alt="">
         </div>
 
-        <form action="">
-            <h3>Book appointment</h3>
-            <input type="text" placeholder="your name" class="box">
-            <input type="number" placeholder="your number" class="box">
-            <input type="text" placeholder="your email" class="box">
-            <input type="date" class="box">
-            <input type="submit" value="book now" class="btn">
-        </form>
+        <!-- <div class="booking-container" id="bookingForm"> -->
+            <form action="/appointment/login" method="POST" class="appmt-form">
+                <h3>Book appointment</h3>
+                <input type="text" placeholder="Votre nom" class="box" id="patientName" value="Liz Ray">
+                <input type="email" placeholder="Votre email" class="box" id="email" value="ray.liz@email.com">
+                <input type="text" placeholder="Votre docteur" class="box" id="doctorName" value="Gil Day">
+                <input type="date" class="box" id="date" value="01/01/1990">
+                <input type="submit" value="Prendre rendez-vous" class="btn">
+            </form>
+        <!-- </div> -->
 
     </div>
 
 </section>
 
-<!-- booking section end -->
+<!-- rendezvous section end -->
 
-<!-- review section start -->
-<section class="review" id="review">
-    <h1 class="heading"> client's <span>review</span></h1>
+<!-- document section start -->
+<section class="document" id="document">
+    <h1 class="heading"> Mes <span>documents</span></h1>
 
     <div class="box-container">
 
@@ -292,12 +245,12 @@
 
     </div>
 </section>
-<!-- review section end -->
+<!-- document section end -->
 
-<!-- about section start -->
-<section class="about" id="about">
+<!-- consultation section start -->
+<section class="consultation" id="consultation">
 
-    <h1 class="heading"> <span>about</span> us </h1>
+    <h1 class="heading"> <span>Vos</span> consultation </h1>
 
     <div class="row">
         <div class="image">
@@ -313,7 +266,7 @@
     </div>
 
 </section>
-<!-- about section end -->
+<!-- consultation section end -->
 
 <!-- blog section start -->
 <section class="blogs" id="blogs">
@@ -398,16 +351,16 @@
         <div class="box">
             <h3>Quick links</h3>
             <a href="#"> <i class="fas fa-chevron-right"></i>home</a>
-            <a href="#"> <i class="fas fa-chevron-right"></i>services</a>
-            <a href="#"> <i class="fas fa-chevron-right"></i>about</a>
+            <a href="#"> <i class="fas fa-chevron-right"></i>outils</a>
+            <a href="#"> <i class="fas fa-chevron-right"></i>consultation</a>
             <a href="#"> <i class="fas fa-chevron-right"></i>doctors</a>
             <a href="#"> <i class="fas fa-chevron-right"></i>book</a>
-            <a href="#"> <i class="fas fa-chevron-right"></i>review</a>
+            <a href="#"> <i class="fas fa-chevron-right"></i>document</a>
             <a href="#"> <i class="fas fa-chevron-right"></i>blogs</a>
         </div>
 
         <div class="box">
-            <h3>Our services</h3>
+            <h3>Nos outils</h3>
             <a href="#"> <i class="fas fa-chevron-right"></i>dental care</a>
             <a href="#"> <i class="fas fa-chevron-right"></i>massage therapy</a>
             <a href="#"> <i class="fas fa-chevron-right"></i>cardiology</a>
@@ -447,5 +400,6 @@
 
 
     <script src="/js/scripts.js"></script>
+    <script src="/js/booking.js"></script>
 </body>
 </html>

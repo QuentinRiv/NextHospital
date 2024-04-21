@@ -1,10 +1,9 @@
-const Appointment = require('../models/Appointment');
-const Doctor = require('../models/Doctor');
-const Patient = require('../models/Patient');
-const User = require('../models/User');
-const path = require('path');
+import Consultation from '../models/Consultation.js';
+import Doctor from '../models/Doctor.js';
+import Patient from '../models/Patient.js';
 
-exports.create = async (req, res) => {
+
+export async function create(req, res) {
     const doctorId = await getDoctorIdByName(req.body.doctorName);
     const patientId = await getPatientIdByName(req.body.patientName);
 
@@ -14,20 +13,20 @@ exports.create = async (req, res) => {
     }
 
     try {
-        const newAppointment = new Appointment({
+        const newConsultation = new Consultation({
             date: req.body.date,
             doctor: doctorId,
             patient: patientId,
             category: req.body.category,
             info: req.body.info
         });
-        await newAppointment.save();
+        await newConsultation.save();
         res.status(201).json({ message: 'Consultation créée !' });
     } catch (error) {
-        console.error('Error creating appointment:', error);
+        console.error('Error creating Consultation:', error);
         res.status(500).json({ message: 'Erreur lors de la création de la consultation' });
     }
-};
+}
 
 async function getDoctorIdByName(doctorName) {
     try {
@@ -57,7 +56,7 @@ async function getPatientIdByName(patientName) {
     }
 }
 
-exports.random = async (req, res) => {
+export async function random(req, res) {
     try {
         const doctorName = await getRandomDoctorName();
         const patientName = await getRandomPatientName();
@@ -67,7 +66,7 @@ exports.random = async (req, res) => {
         let today = new Date();
         const date = today.toISOString().split('T')[0];
 
-        await exports.create({
+        await create({
             body: {
                 date,
                 doctorName,
@@ -77,10 +76,10 @@ exports.random = async (req, res) => {
             }
         }, res);
     } catch (err) {
-        console.error('Error generating random appointment:', err);
+        console.error('Error generating random consultation:', err);
         res.status(500).json({ message: 'Erreur lors de la création d\'une consultation aléatoire' });
     }
-};
+}
 
 async function getRandomDoctorName() {
     try {

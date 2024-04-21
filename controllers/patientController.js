@@ -1,19 +1,18 @@
-const User = require('../models/User');
-const Patient = require('../models/Patient');
-const Doctor = require('../models/Doctor');
-const path = require('path'); // Assurez-vous que cette ligne est décommentée
+import User from '../models/User.js';
+import Patient from '../models/Patient.js';
+import { getPatientInfo, getDocInfo, getUserInfo, getConsultations } from './dbController.js'; // Ajustez le chemin relatif selon votre structure de répertoire
 
 
-const bcrypt = require('bcrypt');
+import { hash } from 'bcrypt';
 const saltRounds = 10; // Par exemple
 
-exports.create = async (req, res) => {
+export async function create(req, res) {
   try {
     // Hashage du mot de passe
-    const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+    const hashedPassword = await hash(req.body.password, saltRounds);
 
     // Recherche du docteur
-    const doc = await Doctor.findOne({ 'name': req.body.assignedDoctor });
+    const doc = await Patient.findOne({ '_id': req.body.assignedDoctor });
     if (!doc) {
       return res.status(404).send("Erreur : docteur non trouvé !");
     }
@@ -43,68 +42,61 @@ exports.create = async (req, res) => {
     console.error(err);
     res.status(500).send("Erreur lors de la création du patient ou de l'utilisateur : " + err.message);
   }
-};
+}
 
 
-exports.getPatients = (req, res) => {
-  Patient.find({}).then(patients => {
+export function getPatients(req, res) {
+  find({}).then(patients => {
       res.render('patients', { patients: patients });
   }).catch(err => {
       console.error(err);
       res.status(500).send('Erreur lors de la récupération des patients');
   });
-};
+}
 
-exports.home = (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'views', 'index.html'));
-};
+export async function patientPage(req, res) {
+  const user = await getUserInfo('_id', req.user);
+  
+  if (user.userInfo.profileType != 'Patient') {
+    return res.status(403).send('Not authorised : you are not a patient...');
+  }
 
-exports.patientPage = (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'views', 'patient.html'));
-};
+  const consuls = await getConsultations(user.profileType.id); // Consultation
+
+  res.render('patient', {
+    consultations: consuls  // Envoyer l'ID utilisateur à la vue EJS
+  });
+}
 
 
-exports.random = (req, res) => {
+export async function random(req, res) {
 
-  async function getRandomDoctorId() {
-    try {
-      const doctors = await Doctor.find({});
-      const randomDoctor = doctors[Math.floor(Math.random() * doctors.length)];
-      return randomDoctor.name;
-    } catch (error) {
-      console.error('Failed to retrieve doctor IDs:', error);
-      return null;
-    }
-  };
+async function createRandomPatient() {
+  const names = [
+    'Max Lee', 'Bob Zin', 'Joe Kim', 'Tim Fox', 'Sam Tao',
+    'Liz Ray', 'Amy Joe', 'Ron Kay', 'Eva Sun', 'Mia Pao',
+    'Dan Roy', 'Sue Ivy', 'Tom Day', 'Ann May', 'Leo Tay'
+  ];
 
-  async function createRandomPatient() {
-    const names = [
-      'Max Lee', 'Bob Zin', 'Joe Kim', 'Tim Fox', 'Sam Tao',
-      'Liz Ray', 'Amy Joe', 'Ron Kay', 'Eva Sun', 'Mia Pao',
-      'Dan Roy', 'Sue Ivy', 'Tom Day', 'Ann May', 'Leo Tay'
-    ];
-    
-    const randomName = names[Math.floor(Math.random() * names.length)];
-    const [firstName, lastName] = randomName.split(' ');
+  const randomName = names[Math.floor(Math.random() * names.length)];
+  const [firstName, lastName] = randomName.split(' ');
 
-    const email = `${lastName.toLowerCase()}.${firstName.toLowerCase()}@email.com`;
-    const password = '1234';
-    const image = `pat_${firstName.toLowerCase()}.jpg`;
-    const assignedDoctorId = await getRandomDoctorId();
+  const email = `${lastName.toLowerCase()}.${firstName.toLowerCase()}@email.com`;
+  const password = '1234';
+  const assignedDoctor = await getDocInfo();
+  const assignedDoctorId = assignedDoctor.id;
 
-    if (!assignedDoctorId) {
-      console.log('No doctor available to assign');
-      return;
-    }
+  if (!assignedDoctorId) {
+    return null;
+  }
 
-  // Créer un faux objet req et res pour simuler une requête
+  // Simuler une requête pour la création d'un patient
   const fakeReq = {
     body: {
       name: `${firstName} ${lastName}`,
       email,
       password,
-      assignedDoctor: assignedDoctorId,
-      image
+      assignedDoctor: assignedDoctorId
     }
   };
 
@@ -121,52 +113,33 @@ exports.random = (req, res) => {
     }
   };
 
-  try {
-    // Appeler la fonction createPatient avec les objets fakeReq et fakeRes
-    console.log(fakeReq);
-    await exports.create(fakeReq, fakeRes);
-  } catch (err) {
-      console.error('Error generating random patient:', err);
-    }
+  await create(fakeReq, fakeRes);
+
+    return fakeReq.body;
+
+};
+
+
+  const randompatient = await createRandomPatient();
+  console.log("\n-", randompatient);
+
+  const patientData = {
+      doctorName: randompatient.name,  // Remplacez par les données réelles
+      email: randompatient.email,
+      image: "/images/doc_Rex.jpg"  // Assurez-vous que le chemin est correct
   };
-
-  createRandomPatient();
-
-  res.status(200).send("Tout bon ! ");
-
-};
+  res.render('random', patientData);
+}
 
 
-exports.getInfo = async (req, res) => {
-  const key = req.query.key;
-  const value = req.query.value;
-  if (value) {
-      try {
-          // Correction de la valeur pour remplacer '%20' par des espaces
-          const adjustedValue = value.replace(/%20/g, " ");
-          // Assumons que vous cherchez par 'name', corriger la requête pour utiliser la clé correcte
-          const patient = await Patient.findOne({ [key]: value });
-
-          if (patient) {
-              console.log(patient);
-              res.status(202).json({
-                  id: patient._id,
-                  email: patient.email,
-                  name: patient.name,
-                  assignedDoctor: patient.assignedDoctor,
-                  image: patient.image || "no image so far",
-              });
-          } else {
-              // Aucun utilisateur trouvé avec ce nom
-              res.status(404).json({ message: "Aucun patient trouvé avec ce nom." });
-          }
-      } catch (error) {
-          // Gestion des erreurs de la requête à la base de données
-          console.error('Erreur lors de la recherche du patient:', error);
-          res.status(500).json({ message: "Erreur interne du serveur lors de la recherche du patient." });
-      }
-  } else {
-      res.status(400).json({ message: "Aucune valeur spécifiée pour la recherche." });
+export async function getInfo(req, res) {
+  try {
+    const data = await getPatientInfo(req.query.key, req.query.value);
+    if (!data) {
+      return res.status(404).json({ error: "Aucune donnée trouvée pour la clé et la valeur spécifiées" });
+    }
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(500).send("Erreur interne du serveur : ", error);
   }
-};
-
+}

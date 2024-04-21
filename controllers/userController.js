@@ -1,12 +1,14 @@
-const jwt = require('jsonwebtoken');
-const path = require('path');
-const bcrypt = require('bcrypt');
+import jwt from 'jsonwebtoken';
+// import { join } from 'path';
+import { hash as _hash, compare } from 'bcrypt';
 
-const User = require('../models/User');
-const { Http2ServerResponse } = require('http2');
+import User from '../models/User.js';
+import { Http2ServerResponse } from 'http2';
+import { getUserInfo } from './dbController.js'; // Ajustez le chemin relatif selon votre structure de répertoire
 
-exports.signup = (req, res, next) => {
-    bcrypt.hash(req.body.password, 10)
+
+export function signup(req, res, next) {
+    _hash(req.body.password, 10)
       .then(hash => {
         const user = new User({
           email: req.body.email,
@@ -19,16 +21,16 @@ exports.signup = (req, res, next) => {
           .catch(error => res.status(400).json({ error }));
       })
       .catch(error => res.status(500).json({ error: error.message }));
-  };
+  }
 
 
-  exports.login = (req, res, next) => {
-    User.findOne({ email: req.body.email })
+  export function   login(req, res, next) {
+    findOne({ email: req.body.email })
         .then(user => {
             if (!user) {
                 return res.status(401).json({ error: 'Utilisateur non trouvé !' });
             }
-            bcrypt.compare(req.body.password, user.password)
+            compare(req.body.password, user.password)
                 .then(valid => {
                     if (!valid) {
                         return res.status(401).json({ error: 'Mot de passe incorrect !' });
@@ -50,40 +52,29 @@ exports.signup = (req, res, next) => {
                 .catch(error => res.status(500).json({ error: error.message }));
         })
         .catch(error => res.status(500).json({ error }));
- };
+ }
 
- exports.connect = (req, res, next) => {
-    res.sendFile(path.join(__dirname, '..', 'views', 'login.html'));
-};
+ export function  connect(req, res, next) {
+    res.sendFile(join(__dirname, '..', 'views', 'login.html'));
+}
 
-exports.getUserInfo = async (req, res) => {
-    const key = req.query.key;
-    const value = req.query.value;
-    if (value) {
-        try {
-            // Correction de la valeur pour remplacer '%20' par des espaces
-            const adjustedValue = value.replace(/%20/g, " ");
-            // Assumons que vous cherchez par 'name', corriger la requête pour utiliser la clé correcte
-            const user = await User.findOne({ [key]: value });
-
-            if (user) {
-                console.log(user);
-                res.status(202).json({
-                    id: user._id,
-                    email: user.email,
-                    profileType: user.profileType // Données réelles du patient trouvé
-                });
-            } else {
-                // Aucun utilisateur trouvé avec ce nom
-                res.status(404).json({ message: "Aucun user trouvé avec ce nom." });
-            }
-        } catch (error) {
-            // Gestion des erreurs de la requête à la base de données
-            console.error('Erreur lors de la recherche du user:', error);
-            res.status(500).json({ message: "Erreur interne du serveur lors de la recherche du user ." });
-        }
-    } else {
-        res.status(400).json({ message: "Aucune valeur spécifiée pour la recherche." });
+export async function getInfo(req, res) {
+    try {
+      const data = await getUserInfo(req.query.key, req.query.value);
+      if (!data) {
+        return res.status(404).json({ error: "Aucune donnée trouvée pour la clé et la valeur spécifiées" });
+      }
+      res.status(200).json(data);
+    } catch (error) {
+      res.status(500).send("Erreur interne du serveur : ", error);
     }
+  }
+
+  const userCtrl = {
+    signup,
+    login,
+    connect,
+    getInfo
 };
 
+export default userCtrl;

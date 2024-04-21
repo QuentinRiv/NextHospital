@@ -250,13 +250,13 @@ section:nth-child(even){
     color:var(--light-color);
 }
 
-.services .box-container{
+.outils .box-container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
     gap:2rem;
 }
 
-.services .box-container .box{
+.outils .box-container .box{
     background: #fff;
     border-radius: .5rem;
     box-shadow: var(--box-shadow);
@@ -267,25 +267,25 @@ section:nth-child(even){
     justify-content: space-between;
 }
 
-.services .box-container .box i{
+.outils .box-container .box i{
     color: var(--green);
     font-size: 5rem;
     padding-bottom: 1;
 }
 
-.services .box-container .box h3{
+.outils .box-container .box h3{
     color: var(--black);
     font-size: 2.5rem;
     padding: 1rem 0;
 }
 
-.services .box-container .box p{
+.outils .box-container .box p{
     color: var(--light-color);
     font-size: 1.4rem;
     line-height: 2;
 }
 
-.services .box-container .box a.btn {
+.outils .box-container .box a.btn {
     align-self: flex-end;
     margin-top: auto;
 }
@@ -324,13 +324,13 @@ section:nth-child(even){
 }
 
 
-.patients .box-container{
+.consultation .box-container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     gap:2rem;
 }
 
-.patients .box-container .box{
+.consultation .box-container .box{
     text-align: center;
     background: #fff;
     border: var(--border);
@@ -338,7 +338,7 @@ section:nth-child(even){
     padding: 2rem;
 }
 
-.patients .box-container img{
+.consultation .box-container img{
     height: 20rem;
     border: var(--border);
     border-radius: .5rem;
@@ -347,21 +347,21 @@ section:nth-child(even){
 
 }
 
-.patients .box-container .box h3{
+.consultation .box-container .box h3{
     color: var(--black);
     font-size: 2.5rem;
 }
 
-.patients .box-container .box span{
+.consultation .box-container .box span{
     color: var(--green);
     font-size: 1.5rem;
 }
 
-.patients .box-container .box share{
+.consultation .box-container .box share{
     padding-top: 2rem;
 }
 
-.patients .box-container .box a{
+.consultation .box-container .box a{
     height: 5rem;
     width: 5rem;
     line-height: 4.5rem;
@@ -372,28 +372,28 @@ section:nth-child(even){
     margin: .3rem;
 }
 
-.patients .box-container .box a:hover{
+.consultation .box-container .box a:hover{
     background-color: var(--green);
     color: #fff;
     box-shadow: var(--box-shadow);
 }
 
-.book .row{
+.rendezvous .row{
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     gap: 2rem;
 }
 
-.book .row .image{
+.rendezvous .row .image{
     flex:1 1 45rem;
 }
 
-.book .row .image img{
+.rendezvous .row .image img{
     width: 100%;
 }
 
-.book .row form{
+.rendezvous .row form{
     flex:1 1 45rem;
     background: #fff;
     border: var(--border);
@@ -403,13 +403,13 @@ section:nth-child(even){
     border-radius: .5rem;
 }
 
-.book .row form h3{
+.rendezvous .row form h3{
     color: var(--black);
     padding-bottom: 1rem;
     font-size: 3rem;
 }
 
-.book .row form .box{
+.rendezvous .row form .box{
     width: 100%;
     margin: .7rem 0;
     border-radius: .5rem;
@@ -420,17 +420,17 @@ section:nth-child(even){
     padding: 1rem;
 }
 
-.book .row form .btn{
+.rendezvous .row form .btn{
     padding: 1rem 3rem;
 }
 
-.review .box-container{
+.document .box-container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
     gap: 2rem;
 }
 
-.review .box-container .box{
+.document .box-container .box{
     border: var(--border);
     box-shadow: var(--box-shadow);
     border-radius: .5rem;
@@ -442,7 +442,7 @@ section:nth-child(even){
     z-index: 0;
 }
 
-.review .box-container .box img{
+.document .box-container .box img{
     height: 10rem;
     width: 10rem;
     border-radius: 50%;
@@ -450,26 +450,26 @@ section:nth-child(even){
     border: .5rem solid #fff;
 }
 
-.review .box-container .box h3 {
+.document .box-container .box h3 {
     color: #fff;
     font-size: 2.5rem;
     padding: .5rem 0;
 }
 
 
-.review .box-container .box stars i {
+.document .box-container .box stars i {
     color: #fff;
     font-size: 1.5rem;
 }
 
-.review .box-container .box .text {
+.document .box-container .box .text {
     color: var(--light-color);
     line-height: 1.8;
     font-size: 1.6rem;
     padding-top: 4rem;
 }
 
-.review .box-container .box:before{
+.document .box-container .box:before{
     content: '';
     position: absolute;
     top: -4rem; left: 50%;

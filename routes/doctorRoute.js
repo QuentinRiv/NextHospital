@@ -1,14 +1,14 @@
-const express = require('express');
-const path = require('path'); // Assurez-vous que cette ligne est décommentée
-const router = express.Router();
+import { Router } from 'express';
+import { join } from 'path'; // Assurez-vous que cette ligne est décommentée
+const router = Router();
 
-const auth = require('../middleware/auth');
+import { requireAuth } from '../middleware/auth.js';
 
-const Prescription = require('../models/Prescription');
-const doctorCtrl = require('../controllers/doctorController');
+import Prescription from '../models/Prescription.js';
+import { create, getInfo, doctorPage, random } from '../controllers/doctorController.js';
 
 router.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'views', 'index.html'));
+  res.sendFile(join(__dirname, '..', 'views', 'index.html'));
 });
   
 
@@ -31,12 +31,11 @@ router.post('/prescriptions', (req, res) => {
   });
 
   // Exemple pour créer un nouvel utilisateur
-router.post('/new', doctorCtrl.create);
-router.get('/doctors', auth.requireAuth, doctorCtrl.getDoctors);
-router.get('/getinfo', doctorCtrl.getinfo);
-router.get('/main', auth.requireAuth, doctorCtrl.doctorPage);
-router.get('/random', doctorCtrl.random);
+router.post('/new', create);
+router.get('/getinfo', getInfo);
+router.get('/main', requireAuth, doctorPage);
+router.get('/random', random);
 
 
 
-module.exports = router;
+export default router;
