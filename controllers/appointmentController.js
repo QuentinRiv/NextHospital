@@ -3,11 +3,11 @@ import { getPatientInfo, getDocInfo } from './dbController.js'; // Ajustez le ch
 
 
 async function getAppointments(key, profileId) {
-    const appointments = await find({ [key]: profileId });
+    const appointments = await Appointment.find({ [key]: profileId }).sort('date');
     let correct_appointments = []
 
     for (let i = 0; i < appointments.length; i++) {
-        let appointment = { path: appointments[i].path }; // Initiate dict
+        let appointment = { }; // Initiate dict
 
         const date = new Date(appointments[i].date);
         const docinfo = await getDocInfo('_id', appointments[i].doctor);
@@ -16,6 +16,7 @@ async function getAppointments(key, profileId) {
         appointment['date'] = date.toISOString().split('T')[0];
         appointment['doctor'] = docinfo.name;
         appointment['patient'] = patientinfo.name;
+        appointment['about'] = appointments[i].about;
 
         correct_appointments.push(appointment);
     }
@@ -23,8 +24,6 @@ async function getAppointments(key, profileId) {
   };
 
  async function create(req, res) {
-
-      console.log("RES = ", req.body);
 
       try {
         const doctor = await getDocInfo('name', req.body.doctorName);
@@ -39,7 +38,7 @@ async function getAppointments(key, profileId) {
             date: new Date(req.body.date),
             doctor: doctor.id,
             patient: patient.id,
-            path: "random_path"
+            about: req.body.date
           });
           await newAppmt.save();
         } catch (err) {
@@ -54,7 +53,8 @@ async function getAppointments(key, profileId) {
   };
 
   const appmtCtrl = {
-    create
+    create,
+    getAppointments
 };
 
 export default appmtCtrl;

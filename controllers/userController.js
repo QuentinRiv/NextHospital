@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
-// import { join } from 'path';
+import { join, dirname } from 'path';
 import { hash as _hash, compare } from 'bcrypt';
+import { fileURLToPath } from 'url';
 
 import User from '../models/User.js';
 import { Http2ServerResponse } from 'http2';
@@ -24,8 +25,8 @@ export function signup(req, res, next) {
   }
 
 
-  export function   login(req, res, next) {
-    findOne({ email: req.body.email })
+  export function login(req, res, next) {
+    User.findOne({ email: req.body.email })
         .then(user => {
             if (!user) {
                 return res.status(401).json({ error: 'Utilisateur non trouvé !' });
@@ -54,8 +55,11 @@ export function signup(req, res, next) {
         .catch(error => res.status(500).json({ error }));
  }
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
  export function  connect(req, res, next) {
-    res.sendFile(join(__dirname, '..', 'views', 'login.html'));
+    res.sendFile(join(__dirname, '..', 'views', './login.html'));
 }
 
 export async function getInfo(req, res) {

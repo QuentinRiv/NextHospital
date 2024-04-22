@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/timeline.css">
 </head>
 <body>
    <!-- header section part -->
@@ -23,6 +24,7 @@
             <a href="#consultation">Consultation</a>
             <a href="#rendezvous">RDV</a>
             <a href="#document">Documents</a>
+            <a href="#about">About</a>
             <!-- <a href="#review">Review</a> -->
             <a href="#blogs">Blogs</a>
         </nav>
@@ -187,7 +189,12 @@
                 <input type="text" placeholder="Votre nom" class="box" id="patientName" value="Liz Ray">
                 <input type="email" placeholder="Votre email" class="box" id="email" value="ray.liz@email.com">
                 <input type="text" placeholder="Votre docteur" class="box" id="doctorName" value="Gil Day">
-                <input type="date" class="box" id="date" value="01/01/1990">
+                <select class="box" name="about" id="about">
+                    <option value="Urgence">Urgence</option>
+                    <option value="suivi">Suivi</option>
+                    <option value="checkup">Checkup</option>
+                  </select>
+                <input type="date" class="box" id="date" value="1995-05-17">
                 <input type="submit" value="Prendre rendez-vous" class="btn">
             </form>
         <!-- </div> -->
@@ -247,26 +254,30 @@
 </section>
 <!-- document section end -->
 
-<!-- consultation section start -->
-<section class="consultation" id="consultation">
+<!-- about section start -->
+<section class="about" id="about">
 
-    <h1 class="heading"> <span>Vos</span> consultation </h1>
+    <h1 class="heading"> <span>Vos</span> about </h1>
 
     <div class="row">
-        <div class="image">
-            <img src="/image/team.jpg" alt="">
-        </div>
-
-        <div class="content">
-            <h3>We take care of yout healthy life</h3>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quos asperiores distinctio, nisi eum autem iure. Consequuntur, unde eius libero autem mollitia odit nam corrupti quidem, molestias soluta, asperiores earum ut.</p>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci fuga dolorem facere. Saepe, odio molestias alias exercitationem sed repellat sit, dignissimos, veniam esse atque aspernatur aliquam iste! Quo, velit magnam.</p>
-            <a href="#" class="btn"> Plus d'info <span class="fas fa-chevron-right"></span></a>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" rel="stylesheet" />
+        <div class="timeline" style="--items: 7;">
+        <h1 class="truc">Timeline</h1>
+        <h1 class="trac">Autre</h1>
+        <ul>
+            <% for (var i = 0; i < appointments.length; i++) { %>
+                <li style="--index: <%= i+1%>">
+                    <h3><%= appointments[i].date%></h3>
+                    <p>With : <%= appointments[i].doctor%></p>
+                    <p>About : <%= appointments[i].about%></p>
+                </li>
+            <% } %>
+        </ul>
         </div>
     </div>
 
 </section>
-<!-- consultation section end -->
+<!-- about section end -->
 
 <!-- blog section start -->
 <section class="blogs" id="blogs">

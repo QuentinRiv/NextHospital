@@ -14,7 +14,7 @@ const AppointmentSchema = new Schema({
       ref: 'Patient', // Assurez-vous que 'Patient' correspond au nom de votre modèle
       required: true 
     },
-    path: { type: String, required: true}
+    about: { type: String, required: true}
   });
   
   export default mongoose.model('Appointment', AppointmentSchema);

@@ -1,7 +1,7 @@
 import User from '../models/User.js';
 import Patient from '../models/Patient.js';
 import { getPatientInfo, getDocInfo, getUserInfo, getConsultations } from './dbController.js'; // Ajustez le chemin relatif selon votre structure de répertoire
-
+import appmtCtrl from './appointmentController.js'
 
 import { hash } from 'bcrypt';
 const saltRounds = 10; // Par exemple
@@ -61,10 +61,12 @@ export async function patientPage(req, res) {
     return res.status(403).send('Not authorised : you are not a patient...');
   }
 
+
   const consuls = await getConsultations(user.profileType.id); // Consultation
+  const appointments = await appmtCtrl.getAppointments('patient', user.profileType.id); 
 
   res.render('patient', {
-    consultations: consuls  // Envoyer l'ID utilisateur à la vue EJS
+    consultations: consuls, appointments: appointments  // Envoyer l'ID utilisateur à la vue EJS
   });
 }
 

@@ -45,7 +45,8 @@ app.listen(PORT, () => {
 app.get('/todo', function(req, res){
   const afaire = {
     '2': "Documents => créer une DB, le schéma",
-    '3': "Documents => générer aléatoirement des docs"
+    '3': "Documents => générer aléatoirement des docs",
+    '1': "Appointment => enlever l'index path"
   };
   return res.status(202).json(afaire);
 

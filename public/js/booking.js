@@ -5,13 +5,18 @@ document.getElementById('bookingForm').addEventListener('submit', function(event
     const doctorName = document.getElementById('doctorName').value;
     const email = document.getElementById('email').value;
     const date = document.getElementById('date').value;
+    var e = document.getElementById("about");
+    const about = e.options[e.selectedIndex].value;
+    console.log('\n----about: ' + about);
+    
+
 
     fetch('/appointment/new', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email: email, patientName: patientName, doctorName: doctorName, date: date})
+        body: JSON.stringify({ email: email, patientName: patientName, doctorName: doctorName, date: date, about: about})
     })
     .then(response => {
         if (!response.ok) {
