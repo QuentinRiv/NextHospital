@@ -12,11 +12,16 @@ async function getAppointments(key, profileId) {
         const date = new Date(appointments[i].date);
         const docinfo = await getDocInfo('_id', appointments[i].doctor);
         const patientinfo = await getPatientInfo('_id', appointments[i].patient);
+        // console.log("Date :", date, " - Maintenant :", Date());
+        let dateToCompare = new Date(date);
+        let currentDate = new Date(); 
+        let timeline = (dateToCompare < currentDate) ? 'past' : 'future';
 
         appointment['date'] = date.toISOString().split('T')[0];
         appointment['doctor'] = docinfo.name;
         appointment['patient'] = patientinfo.name;
         appointment['about'] = appointments[i].about;
+        appointment['timeline'] = timeline;
 
         correct_appointments.push(appointment);
     }
@@ -38,7 +43,7 @@ async function getAppointments(key, profileId) {
             date: new Date(req.body.date),
             doctor: doctor.id,
             patient: patient.id,
-            about: req.body.date
+            about: req.body.about
           });
           await newAppmt.save();
         } catch (err) {

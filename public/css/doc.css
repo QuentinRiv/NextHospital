@@ -1,0 +1,131 @@
+/* Style global pour le corps de la page */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Style pour le bandeau en tête de page */
+.header {
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    position: fixed; /* Rendre le header fixe en haut de la page */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Garantit que le header reste au-dessus des autres contenus */
+}
+
+/* Style pour le conteneur des trois div */
+.content {
+    display: flex; /* Utilisation de Flexbox pour la disposition des divs */
+    margin-top: 60px; /* Ajouter un espace en haut pour ne pas que le contenu soit caché par le header */
+    height: 1000px; /* Hauteur définie pour permettre le défilement pour voir l'effet fixe du header */
+}
+
+/* Style pour la division de gauche */
+.left-side {
+    background-color: #f4f4f4;
+    width: 20%;
+    padding: 20px;
+    padding-top: 50px;
+}
+
+/* Style pour la division du milieu */
+.middle {
+    background-color: #ddd;
+    width: 50%;
+    padding: 20px;
+}
+
+/* Style pour la division de droite */
+.right-side {
+    background-color: #f4f4f4;
+    width: 30%;
+    padding: 20px;
+}
+
+/* Utilisation de flex-grow pour les espaces restants */
+.left-side, .right-side, .middle {
+    flex-grow: 1;
+}
+/* Reset des marges et du padding */
+ul.directory-structure, .directory-structure ul {
+    list-style-type: none; /* Enlève les puces */
+    padding-left: 20px; /* Espace à gauche pour l'indentation */
+    margin: 0;
+}
+
+/* Style général pour les dossiers et les fichiers */
+.directory-structure li {
+    border: none;
+    padding: 5px 0;
+    cursor: pointer;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+/* Styles pour les noms des dossiers et fichiers */
+.folder-name, .file {
+    padding: 5px 8px;
+    display: block;
+    color: #555;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.folder-name:hover, .file:hover {
+    background-color: #f0f0f0;
+}
+
+/* Icônes avec Font Awesome pour dossiers et fichiers */
+.folder-name::before {
+    content: '\f07b'; /* icône de dossier */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    padding-right: 5px;
+}
+
+.folder.open > .folder-name::before {
+    content: '\f07c'; /* icône de dossier ouvert */
+}
+
+.file::before {
+    content: '\f15b'; /* icône de fichier */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    padding-right: 5px;
+}
+
+.directory-structure {
+    background-color: #bed9e4;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-size: 120%;
+}
+
+.folder-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.folder.open > .folder-content {
+    max-height: 500px; /* Assurez-vous que ce max-height est suffisant pour contenir tout le contenu interne */
+    opacity: 1;
+}
+
+/* Amélioration visuelle pour les transitions */
+.folder-name, .file {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+@media (max-width: 600px) {
+    .directory-structure {
+        width: 100%;
+        box-sizing: border-box; /* Assure que le padding et la bordure sont inclus dans la largeur */
+    }
+}

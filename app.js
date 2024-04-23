@@ -29,13 +29,15 @@ app.set('views', join(__dirname, 'views'));
 import patientRoutes from './routes/patientRoute.js';
 import doctorRoutes from './routes/doctorRoute.js';
 import userRoutes from './routes/userRoute.js';
-import consultationRoutes from './routes/consultationRoute.js';
-import appointmentRoutes from './routes/appointmentRoutes.js';
+import consultationRoute from './routes/consultationRoute.js';
+import appointmentRoute from './routes/appointmentRoute.js';
+import documentRoute from './routes/documentRoute.js';
 app.use('/patient', patientRoutes);
 app.use('/doctor', doctorRoutes);
 app.use('/auth', userRoutes);
-app.use('/consultation', consultationRoutes);
-app.use('/appointment', appointmentRoutes);
+app.use('/consultation', consultationRoute);
+app.use('/appointment', appointmentRoute);
+app.use('/document', documentRoute);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

@@ -6,6 +6,8 @@ body {
   .timeline {
     --background: #0a0f2b;
     --accent: #02d664;
+    --past: #d68102cc;
+    --future: #40e0e0cc;
     --text: white;
     --line: #c4c4c4;
     background: var(--background);
@@ -13,15 +15,23 @@ body {
     padding: 30px;
     margin: auto;
   }
-  
-  .timeline h1.truc {
-    border-left: 4px solid var(--accent);
-    padding: 10px 12px 10px;
-  }
 
-  .timeline h1.trac {
-    border-right: 4px solid var(--accent);
+  .header-flex {
+    display: flex;
+    justify-content: space-between; /* Alignement des enfants aux extrémités opposées */
+    width: 100%; /* Assurez-vous que le conteneur parent s'étend sur toute la largeur */
+}
+  
+
+   h1#right {
+    border-right: 4px solid var(--future);
     padding: 10px 12px 10px;
+    font-size: 25px;
+  }
+  h1#left {
+    border-left: 4px solid var(--past);
+    padding: 10px 12px 10px;
+    font-size: 25px;
   }
   
   .timeline ul {
@@ -120,11 +130,18 @@ body {
   }
   
   .timeline ul li h3 {
-    color: var(--accent);
     margin: 0;
     margin-bottom: 5px;
     font-size: 2.6em;
     position: relative;
+  }
+
+  .timeline ul li h3.past {
+    color: var(--past);
+  }
+
+  .timeline ul li h3.future {
+    color: var(--future);
   }
   
   .timeline ul li p {

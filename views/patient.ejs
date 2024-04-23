@@ -212,8 +212,8 @@
     <div class="box-container">
 
         <div class="box">
-            <img src="/image/client.png" alt="">
-            <h3>Jean Bonbeurre</h3>
+            <img src="/image/upload_doc.png" alt="">
+            <h3>Importer un document</h3>
             <div class="starts">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -221,12 +221,12 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star-half-alt"></i>
             </div>
-            <p class="text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea fugiat omnis error officia eius possimus dignissimos, similique assumenda sunt itaque provident earum culpa dolor pariatur repellat deserunt quaerat hic. Hic.</p>
+            <p class="text">Besoin de rajouter un document à votre compte Patient ? Des ordonnances passées ou un dossier de consultation à venir ? C'est par ici !</p>
         </div>
 
         <div class="box">
-            <img src="/image/client.png" alt="">
-            <h3>Jean Bonbeurre</h3>
+            <img src="/image/search_doc.svg" alt="">
+            <h3>Consulter mes documents</h3>
             <div class="starts">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -234,12 +234,12 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star-half-alt"></i>
             </div>
-            <p class="text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea fugiat omnis error officia eius possimus dignissimos, similique assumenda sunt itaque provident earum culpa dolor pariatur repellat deserunt quaerat hic. Hic.</p>
+            <p class="text">Besoin de récuperer une ordonnance ? Votre dossier médical pour votre nouveau médecin ? C'est par ici !</p>
         </div>
 
         <div class="box">
-            <img src="/image/client.png" alt="">
-            <h3>Jean Bonbeurre</h3>
+            <img src="/image/ask_doc.png" alt="">
+            <h3>Demander un document</h3>
             <div class="starts">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -247,7 +247,7 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star-half-alt"></i>
             </div>
-            <p class="text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea fugiat omnis error officia eius possimus dignissimos, similique assumenda sunt itaque provident earum culpa dolor pariatur repellat deserunt quaerat hic. Hic.</p>
+            <p class="text">Un formulaire à remplir ? Un dossier à compléter ? Une ordonnance à renouveler ? C'est par ici !</p>
         </div>
 
     </div>
@@ -262,12 +262,16 @@
     <div class="row">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" rel="stylesheet" />
         <div class="timeline" style="--items: 7;">
-        <h1 class="truc">Timeline</h1>
-        <h1 class="trac">Autre</h1>
+        
+            <div class="header-flex">
+                <h1 class="mytext" id="left">Passé</h1>
+                <h1 class="mytext" id="right">À venir</h1>
+            </div>
+            
         <ul>
             <% for (var i = 0; i < appointments.length; i++) { %>
                 <li style="--index: <%= i+1%>">
-                    <h3><%= appointments[i].date%></h3>
+                    <h3 class="<%= appointments[i].timeline%>"><%= appointments[i].date%></h3>
                     <p>With : <%= appointments[i].doctor%></p>
                     <p>About : <%= appointments[i].about%></p>
                 </li>
