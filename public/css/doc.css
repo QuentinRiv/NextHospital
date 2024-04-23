@@ -20,7 +20,7 @@ body {
 /* Style pour le conteneur des trois div */
 .content {
     display: flex; /* Utilisation de Flexbox pour la disposition des divs */
-    margin-top: 60px; /* Ajouter un espace en haut pour ne pas que le contenu soit caché par le header */
+    margin-top: 100px; /* Ajouter un espace en haut pour ne pas que le contenu soit caché par le header */
     height: 1000px; /* Hauteur définie pour permettre le défilement pour voir l'effet fixe du header */
 }
 
@@ -128,4 +128,27 @@ ul.directory-structure, .directory-structure ul {
         width: 100%;
         box-sizing: border-box; /* Assure que le padding et la bordure sont inclus dans la largeur */
     }
+}
+
+.middle .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap:2rem;
+}
+
+.middle .box-container .box{
+    background: #fff;
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    border: blue 1px solid;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.fa-folder {
+    color: rgb(48, 126, 126);
+    font-size: 800%;
 }
