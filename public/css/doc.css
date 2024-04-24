@@ -81,7 +81,7 @@ ul.directory-structure, .directory-structure ul {
 
 /* Icônes avec Font Awesome pour dossiers et fichiers */
 .folder-name::before {
-    content: '\f07b'; /* icône de dossier */
+    content: '\f07b';
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     padding-right: 5px;
@@ -134,6 +134,7 @@ ul.directory-structure, .directory-structure ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
     gap:2rem;
+    align-items: stretch;
 }
 
 .middle .box-container .box{
@@ -146,9 +147,34 @@ ul.directory-structure, .directory-structure ul {
     flex-direction: column;
     justify-content: space-between;
     margin: auto;
+    height: 150px;
+}
+
+.middle .box-container .box .h3 {
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .fa-folder {
     color: rgb(48, 126, 126);
-    font-size: 800%;
+    font-size: 116px;
 }
+
+
+
+/* ******* */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Trois colonnes de taille égale */
+    grid-gap: 10px; /* Espacement entre les cellules */
+  }
+  
+  .cell {
+    width: 100px; /* Taille des cellules */
+    height: 100px; /* Hauteur des cellules */
+    background-color: #f0f0f0; /* Couleur de fond des cellules */
+    border: 1px solid #ccc; /* Bordure des cellules */
+    position: relative; /* Nécessaire pour le positionnement des sous-grilles */
+  }
+  
