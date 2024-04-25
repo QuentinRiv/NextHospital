@@ -6,10 +6,10 @@ import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 
 // Base de données
-const mongoDB = 'mongodb://127.0.0.1/ma_base_de_donnees'; // Remplacez ma_base_de_donnees par le nom de votre base de données
+const mongoDB = 'mongodb://127.0.0.1/ma_base_de_donnees'; // URI de ma DB
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.on('error', console.error.bind(console, 'MongoDB connection error:')); // En cas d'erreur
 
 app.use(json());
 app.use(staticServe('public'));
@@ -20,12 +20,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 app.set('views', join(__dirname, 'views'));
-
 app.set('view engine', 'ejs');
-app.set('views', join(__dirname, 'views'));
 
 
-// Route optionnelle pour servir index.html en tant que page d'accueil
+// Routes qui elles-mêmes font appelle à des Controllers
 import patientRoutes from './routes/patientRoute.js';
 import doctorRoutes from './routes/doctorRoute.js';
 import userRoutes from './routes/userRoute.js';
@@ -39,11 +37,13 @@ app.use('/consultation', consultationRoute);
 app.use('/appointment', appointmentRoute);
 app.use('/document', documentRoute);
 
+// Démarrage du serveur
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
+// Liste des choses à faire
 app.get('/todo', function(req, res){
   const afaire = {
     '2': "Documents => créer une DB, le schéma",
@@ -54,7 +54,7 @@ app.get('/todo', function(req, res){
 
 });
 
-
+// Si l'URL n'existe pas
 app.get('*', function(req, res){
   res.sendFile(join(__dirname, '.', 'views', 'error404.html'));
 });

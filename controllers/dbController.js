@@ -3,11 +3,10 @@ import Patient from '../models/Patient.js';
 import User from '../models/User.js';
 import Consultation from '../models/Consultation.js';
 
-
+// Obtient toutes les infos d'un patient, selon le type de clef
 async function getPatientInfo(key, value) {
     try {
-        // Correction de la valeur pour remplacer '%20' par des espaces
-        // const adjustedValue = value.replace(/%20/g, " ");
+
         const patient = await Patient.findOne({ [key]: value });
 
         if (patient) {
@@ -31,9 +30,10 @@ async function getPatientInfo(key, value) {
 
   };
 
+// Obtient toutes les infos d'un docteur, selon le type de clef
 async function getDocInfo(key, value) {
     try {
-    //   const adjustedValue = value.replace(/%20/g, " ");
+    
       const doctor = await Doctor.findOne({ [key]: value });
   
       if (doctor) {
@@ -45,17 +45,17 @@ async function getDocInfo(key, value) {
           });
           return data;
       } else {
-          // res.status(404).json({ message: "Aucun doctor trouvé avec ce nom." });
+          console.log("Aucun docteur trouvé");
           return false;
       }
   } catch (error) {
-      // Gestion des erreurs de la requête à la base de données
       console.error('Erreur lors de la recherche du doctor:', error);
       return false;
   }
   };
 
-  async function getUserInfo(key, value) {
+// Obtient toutes les infos d'un user, selon le type de clef
+async function getUserInfo(key, value) {
     console.log('getUserInfo', key, value);
     try {
         // Correction de la valeur pour remplacer '%20' par des espaces
@@ -91,6 +91,7 @@ async function getDocInfo(key, value) {
   };
 
 
+// Obtient toutes les consultations d'un oatient, selon l'ID
   async function getConsultations(profileId) {
     const consultations = await Consultation.find({ patient: profileId });
     let correct_consultations = []

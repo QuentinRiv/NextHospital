@@ -3,7 +3,10 @@ import Doctor from '../models/Doctor.js';
 import Patient from '../models/Patient.js';
 
 
+// Création d'un consultation
 export async function create(req, res) {
+
+    // Obtentin des ID des docteur et patient
     const doctorId = await getDoctorIdByName(req.body.doctorName);
     const patientId = await getPatientIdByName(req.body.patientName);
 
@@ -12,6 +15,7 @@ export async function create(req, res) {
         return res.status(404).json({ message: 'Doctor or patient not found' });
     }
 
+    // Création d'une nouvelle consultation
     try {
         const newConsultation = new Consultation({
             date: req.body.date,
@@ -28,6 +32,7 @@ export async function create(req, res) {
     }
 }
 
+// Obtient l'ID d'un docteur en sachant le nom
 async function getDoctorIdByName(doctorName) {
     try {
         const doctor = await Doctor.findOne({ doctorName });
@@ -42,6 +47,7 @@ async function getDoctorIdByName(doctorName) {
     }
 }
 
+// Obtient l'ID d'un patient en sachant le nom
 async function getPatientIdByName(patientName) {
     try {
         const patient = await Patient.findOne({ patientName });
@@ -56,6 +62,7 @@ async function getPatientIdByName(patientName) {
     }
 }
 
+// Création aléatoire d'un RDV
 export async function random(req, res) {
     try {
         const doctorName = await getRandomDoctorName();
@@ -81,6 +88,7 @@ export async function random(req, res) {
     }
 }
 
+// Obtient le nom d'un docteur au hasard
 async function getRandomDoctorName() {
     try {
         const doctors = await Doctor.find({});
@@ -92,6 +100,7 @@ async function getRandomDoctorName() {
     }
 }
 
+// Obtient le nom d'un patient au hasard
 async function getRandomPatientName() {
     try {
         const patients = await Patient.find({});

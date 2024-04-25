@@ -150,14 +150,15 @@ ul.directory-structure, .directory-structure ul {
     height: 150px;
 }
 
-.middle .box-container .box .h3 {
+.cell h3 {
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size: 110%;
 }
 
-.fa-folder {
+.fa-folder-open, .fa-file {
     color: rgb(48, 126, 126);
-    font-size: 116px;
+    font-size: 110px;
 }
 
 
@@ -166,15 +167,26 @@ ul.directory-structure, .directory-structure ul {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Trois colonnes de taille égale */
-    grid-gap: 10px; /* Espacement entre les cellules */
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap:2rem;
+    align-items: stretch;
   }
   
   .cell {
-    width: 100px; /* Taille des cellules */
-    height: 100px; /* Hauteur des cellules */
-    background-color: #f0f0f0; /* Couleur de fond des cellules */
-    border: 1px solid #ccc; /* Bordure des cellules */
-    position: relative; /* Nécessaire pour le positionnement des sous-grilles */
+    background: #fff;
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    border: blue 1px solid;
+    padding: 1.5rem;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: space-between; */
+    /* margin: auto; */
+    height: 150px;
+    text-align: center;
+  }
+
+  .cell:hover {
+    background: #7dc7c1cb;
   }
   

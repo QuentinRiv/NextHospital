@@ -1,6 +1,6 @@
 import User from '../models/User.js';
 import Patient from '../models/Patient.js';
-import { getPatientInfo, getDocInfo, getUserInfo, getConsultations } from './dbController.js'; // Ajustez le chemin relatif selon votre structure de répertoire
+import { getPatientInfo, getDocInfo, getUserInfo, getConsultations } from './dbController.js'; 
 import appmtCtrl from './appointmentController.js'
 
 import { hash } from 'bcrypt';
@@ -45,14 +45,6 @@ export async function create(req, res) {
 }
 
 
-export function getPatients(req, res) {
-  find({}).then(patients => {
-      res.render('patients', { patients: patients });
-  }).catch(err => {
-      console.error(err);
-      res.status(500).send('Erreur lors de la récupération des patients');
-  });
-}
 
 export async function patientPage(req, res) {
   const user = await getUserInfo('_id', req.user);
