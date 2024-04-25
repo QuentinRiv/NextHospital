@@ -1,4 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=inline=swap');
+
 /* Style global pour le corps de la page */
+*{
+    font-family: 'Poppins', sans-serif;
+    /* margin: 0; */
+    padding: 0;
+    /* box-sizing: border-box; */
+    outline: none;
+    border: none;
+    transition: all .2s ease-out;
+    text-decoration: none;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -190,3 +203,28 @@ ul.directory-structure, .directory-structure ul {
     background: #7dc7c1cb;
   }
   
+  .path {
+    margin: 2px 0 15px;
+    background-color: #6eaec7de;
+    border: 1px solid #ac7e7e;
+    border-radius: 10px;
+    /* padding: 10px; */
+    display: flex;
+    align-items: center;
+  }
+
+  .path p {
+    display: inline-block;
+    margin-left: 10px;
+  }
+
+  .path i {
+    font-size: 200%;
+    margin: auto 0;
+    color: green;
+  }
+
+  .path button {
+    background: none;
+    margin-left: 10px;
+  }

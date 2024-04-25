@@ -34,8 +34,8 @@ async function loadFiles(path) {
                 div.id = filename; // More secure than innerHTML
 
                 let icone = document.createElement('i');
-                if (key === 'folder') icone.classList ="fa-solid fa-folder-open ";   
-                if (key != 'folder') icone.classList ="fa-solid fa-file ";               
+                if (key === 'folder') icone.classList ="fa-solid fa-folder-open ";   // si c'est un dossier
+                if (key != 'folder') icone.classList ="fa-solid fa-file ";          // si ca ne l'est pas
                 div.append(icone);
 
                 let namefile = document.createElement('h3');
@@ -45,6 +45,9 @@ async function loadFiles(path) {
                 grille.append(div);
             });
         });
+
+        var lechemin = document.getElementById('chemin');
+        lechemin.innerHTML = path;
     } catch (error) {
         console.error('Erreur lors de la récupération des fichiers:', error);
     }
@@ -75,8 +78,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
             loadFiles(fullPath); // Appelle la fonction loadFiles avec le nouveau chemin
 
-            var lechemin = document.getElementById('chemin');
-            lechemin.innerHTML = fullPath;
+            
         }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    const backButton = document.getElementById('comeback');
+
+    // Gestionnaire pour les clics sur les cellules de la grille
+    backButton.addEventListener('click', function(event) {
+        const currentPath = document.getElementById('chemin').innerHTML;
+
+        let parentPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+        loadFiles(parentPath);
     });
 });
