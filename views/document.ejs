@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Structure de Dossier</title>
-    <link rel="stylesheet" href="/css/doc.css" />
+    <link rel="stylesheet" href="/css/document.css" />
     <script type="module" src="/js/document.js" defer></script>
     <link
       rel="stylesheet"
@@ -56,12 +56,37 @@
           <button id="comeback">
             <i class="fa-solid fa-circle-arrow-left"></i>
           </button>
-          <p id="chemin"><%= path%></p>
+          <p id="chemin">/SSD</p>
         </div>
         <div class="grid" id="grille"></div>
       </section>
 
-      <div class="right-side"></div>
+      <div class="right-side">
+        <div class="fileFullPath">
+          <p id="currentFile">Select a file</p>
+        </div>
+        <div class="fileInfo">
+          <div class="fileSymbole" id="fileSymbole"></div>
+          <div class="grilleInfo">
+            <div class="info">
+              <i class="fa-solid fa-expand"></i>
+              File size
+            </div>
+            <div class="info">
+              <i class="fa-solid fa-folder-plus"></i>
+              Creation date
+            </div>
+            <div class="info">
+              <i class="fa-solid fa-sitemap"></i>
+              Files inside
+            </div>
+            <div class="info">
+              <i class="fa-solid fa-house"></i>
+              Parent folder
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
