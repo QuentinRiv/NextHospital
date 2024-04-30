@@ -182,12 +182,18 @@ export async function getDocumentInfo(req, res) {
       name: req.query.fileName,
     });
 
-    // console.log(documents);
+    const parent = await Document.findOne({ _id: documents["parent"] });
+    var parentName = null;
+    if (parent) {
+      parentName = parent.name;
+    } else {
+      parentName = "None";
+    }
 
     res.send({
       name: documents["name"],
       type: documents["type"],
-      parent: documents["parent"],
+      parent: parentName,
       nbChild: documents["children"].length,
       size: documents["size"],
       creationDate: documents["creationDate"],

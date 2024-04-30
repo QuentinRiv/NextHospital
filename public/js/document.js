@@ -82,23 +82,31 @@ document.addEventListener("DOMContentLoaded", async function () {
   grille.addEventListener("click", handleGridClick);
 
   async function handleGridClick(event) {
-    const cell = findParentCell(event.target);
-    if (!cell) return; // Si le clique n'est pas dans la grille
-
-    const isActive = cell.classList.contains("active");
-
     // Retirer la classe 'active' de toutes les cellules
-    const cells = document.querySelectorAll(".cell");
-    cells.forEach((c) => c.classList.remove("active"));
+    // const cells = document.querySelectorAll(".cell");
+    // cells.forEach((c) => c.classList.remove("active"));
 
-    // Si le div actuel n'était pas actif, ajouter la classe 'active'
-    if (!isActive) {
-      cell.classList.add("active");
-    }
+    // On enlève tout
+    const lastActive = document.querySelector(".active");
+    console.log("\n=> ", lastActive);
+    if (lastActive) lastActive.classList.remove("active");
+    const elems = document.querySelectorAll(".info");
+    elems.forEach((elem) => {
+      elem.classList.remove("show");
+    });
+
+    const cell = findParentCell(event.target);
+    if (!cell || cell === lastActive) {
+      return;
+    } // Si le clique n'est pas dans la grille
+
+    // Pour faire apparaitre en vert
+    cell.classList.add("active");
 
     const currentPath = document.getElementById("chemin").innerHTML;
 
     try {
+      // Récupère les infos du fichier
       const response = await fetchDocumentInfo(currentPath, cell.id);
       const data = await response.json();
 
@@ -118,6 +126,16 @@ document.addEventListener("DOMContentLoaded", async function () {
       elements.forEach((elem) => {
         elem.classList.toggle("show");
       });
+
+      // Les 4 infos du fichiers :
+      let fileSize = document.getElementById("fileSize");
+      let fileCreation = document.getElementById("fileCreation");
+      let fileChildrenNb = document.getElementById("fileChildrenNb");
+      let fileParent = document.getElementById("fileParent");
+      fileSize.innerHTML = data["size"];
+      fileCreation.innerHTML = data["creationDate"];
+      fileChildrenNb.innerHTML = data["nbChild"];
+      fileParent.innerHTML = data["parent"];
     } catch (error) {
       console.error("Erreur", error);
     }
@@ -138,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Gestionnaire pour les clics sur les cellules de la grille
   backButton.addEventListener("click", function (event) {
     const currentPath = document.getElementById("chemin").innerHTML;
-
+    if (currentPath === "/SSD") return; // Si on est déjà à la racine
     let parentPath = currentPath.substring(0, currentPath.lastIndexOf("/"));
     loadFiles(parentPath);
   });

@@ -16,9 +16,15 @@
   </head>
 
   <body>
-    <div class="header">
-      <h1>Ma Bande Fixe</h1>
-    </div>
+    <header class="header">
+      <a href="/" class="logo">MyLogo</a>
+
+      <nav class="navbar">
+        <a href="/patient/main">Home</a>
+        <a href="/patient/main">About</a>
+      </nav>
+    </header>
+
     <div class="content">
       <div class="left-side">
         <ul class="directory-structure">
@@ -71,18 +77,22 @@
             <div class="info">
               <i class="fa-solid fa-expand"></i>
               File size
+              <p id="fileSize"></p>
             </div>
             <div class="info">
               <i class="fa-solid fa-folder-plus"></i>
               Creation date
+              <p id="fileCreation"></p>
             </div>
             <div class="info">
               <i class="fa-solid fa-sitemap"></i>
               Files inside
+              <p id="fileChildrenNb"></p>
             </div>
             <div class="info">
               <i class="fa-solid fa-house"></i>
               Parent folder
+              <p id="fileParent"></p>
             </div>
           </div>
         </div>

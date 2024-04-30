@@ -418,6 +418,7 @@ section:nth-child(even){
     color: var(--black);
     text-transform: none;
     padding: 1rem;
+    background: white;
 }
 
 .rendezvous .row form .btn{
@@ -430,7 +431,7 @@ section:nth-child(even){
     gap: 2rem;
 }
 
-.document .box-container .box{
+.document .box-container > .box{
     border: var(--border);
     box-shadow: var(--box-shadow);
     border-radius: .5rem;

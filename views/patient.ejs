@@ -181,7 +181,7 @@
       <h1 class="heading">Consultations <span>précédentes</span></h1>
 
       <div class="box-container">
-        <% for (var i = 0; i < 3; i++) { %>
+        <% for (var i = 0; i < consultations.length; i++) { %>
         <div class="box">
           <img src="/image/<%= consultations[i].doctorImg%>" alt="" />
           <h3><%= consultations[i].doctor%></h3>
@@ -232,13 +232,12 @@
             id="email"
             value="ray.liz@email.com"
           />
-          <input
-            type="text"
-            placeholder="Votre docteur"
-            class="box"
-            id="doctorName"
-            value="Gil Day"
-          />
+          <select class="box" name="doctorName" id="doctorName">
+            <% for (var i = 0; i < appointments.length; i++) { %>
+            <option value="<%= doctors[i].name%>"><%= doctors[i].name%></option>
+            <% } %>
+          </select>
+
           <select class="box" name="about" id="about">
             <option value="Urgence">Urgence</option>
             <option value="suivi">Suivi</option>

@@ -1,0 +1,45 @@
+/* Styles globaux */
+body {
+    font-family: Arial, sans-serif; /* Police de texte plus moderne */
+    background-color: #f4f4f9; /* Couleur de fond légère */
+    margin: 0;
+    padding: 20px;
+}
+
+.profile-container {
+    max-width: 600px; /* Limite la largeur du conteneur */
+    margin: 0 auto; /* Centre le conteneur sur la page */
+    background-color: #ffffff; /* Fond blanc pour le conteneur */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre douce autour du conteneur */
+    padding: 20px;
+    border-radius: 8px; /* Bordures arrondies pour le conteneur */
+}
+
+/* Styles pour les titres */
+h1 {
+    color: #333; /* Couleur de texte sombre pour le titre */
+    text-align: center; /* Centre le texte du titre */
+}
+
+/* Styles pour les informations du profil */
+.profile-info {
+    text-align: center; /* Centre le texte et les images dans la section d'infos */
+}
+
+.profile-image {
+    width: 150px; /* Fixe la largeur de l'image */
+    height: 150px; /* Fixe la hauteur de l'image */
+    border-radius: 50%; /* Rend l'image circulaire */
+    margin-bottom: 20px; /* Ajoute un espace en dessous de l'image */
+}
+
+/* Styles pour les paragraphes */
+p {
+    color: #555; /* Couleur de texte pour les paragraphes */
+    font-size: 16px; /* Taille de texte pour les paragraphes */
+    line-height: 1.5; /* Hauteur de ligne pour les paragraphes */
+}
+
+strong {
+    color: #000; /* Couleur plus foncée pour les éléments forts */
+}

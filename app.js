@@ -4,6 +4,8 @@ import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
+import dotenv from "dotenv";
+dotenv.config();
 
 // Base de données
 const mongoDB =
@@ -46,9 +48,9 @@ app.listen(PORT, () => {
 // Liste des choses à faire
 app.get("/todo", function (req, res) {
   const afaire = {
-    2: "Documents => créer une DB, le schéma",
-    3: "Documents => générer aléatoirement des docs",
-    1: "Appointment => enlever l'index path",
+    1: "Page des docs => régler les infos qui disparaissent",
+    2: "Page des docs => premier icone pour ajouter un fichier ou dossier",
+    3: "Résoudre les soucis de création de patient",
   };
   return res.status(202).json(afaire);
 });
