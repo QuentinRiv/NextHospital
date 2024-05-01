@@ -47,7 +47,7 @@
       </div>
 
       <div class="content">
-        <h3>Vaccination COVID-19</h3>
+        <h3>Bienvenue <%= user.name %></h3>
         <p>
           La vaccination contre le COVID 19 est recommandée en automne/hiver
           pour les personnes vulnérables. Elle peut les protéger contre une
@@ -215,7 +215,6 @@
           <img src="/image/rdvd.jpg" alt="" />
         </div>
 
-        <!-- <div class="booking-container" id="bookingForm"> -->
         <form action="/appointment/login" method="POST" class="appmt-form">
           <h3>Book appointment</h3>
           <input
@@ -246,7 +245,6 @@
           <input type="date" class="box" id="date" value="1995-05-17" />
           <input type="submit" value="Prendre rendez-vous" class="btn" />
         </form>
-        <!-- </div> -->
       </div>
     </section>
 
@@ -258,52 +256,58 @@
 
       <div class="box-container">
         <div class="box">
-          <img src="/image/upload_doc.png" alt="" />
-          <h3>Importer un document</h3>
-          <div class="starts">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-          <p class="text">
-            Besoin de rajouter un document à votre compte Patient ? Des
-            ordonnances passées ou un dossier de consultation à venir ? C'est
-            par ici !
-          </p>
+          <a class="" href="/document">
+            <img src="/image/upload_doc.png" alt="" />
+            <h3>Importer un document</h3>
+            <div class="starts">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <p class="text">
+              Besoin de rajouter un document à votre compte Patient ? Des
+              ordonnances passées ou un dossier de consultation à venir ? C'est
+              par ici !
+            </p>
+          </a>
         </div>
 
         <div class="box">
-          <img src="/image/search_doc.svg" alt="" />
-          <h3>Consulter mes documents</h3>
-          <div class="starts">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-          <p class="text">
-            Besoin de récuperer une ordonnance ? Votre dossier médical pour
-            votre nouveau médecin ? C'est par ici !
-          </p>
+          <a class="" href="/document">
+            <img src="/image/search_doc.svg" alt="" />
+            <h3>Consulter mes documents</h3>
+            <div class="starts">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <p class="text">
+              Besoin de récuperer une ordonnance ? Votre dossier médical pour
+              votre nouveau médecin ? C'est par ici !
+            </p>
+          </a>
         </div>
 
         <div class="box">
-          <img src="/image/ask_doc.png" alt="" />
-          <h3>Demander un document</h3>
-          <div class="starts">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-          <p class="text">
-            Un formulaire à remplir ? Un dossier à compléter ? Une ordonnance à
-            renouveler ? C'est par ici !
-          </p>
+          <a class="" href="/document">
+            <img src="/image/ask_doc.png" alt="" />
+            <h3>Demander un document</h3>
+            <div class="starts">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <p class="text">
+              Un formulaire à remplir ? Un dossier à compléter ? Une ordonnance
+              à renouveler ? C'est par ici !
+            </p>
+          </a>
         </div>
       </div>
     </section>
@@ -339,103 +343,6 @@
       </div>
     </section>
     <!-- about section end -->
-
-    <!-- blog section start -->
-    <section class="blogs" id="blogs">
-      <h1 class="heading">our <span>blogs</span></h1>
-
-      <div class="box-container">
-        <div class="box">
-          <div class="image">
-            <img src="/image/blog.jpg" alt="" />
-          </div>
-          <div class="content">
-            <div class="icon">
-              <a href="#"> <i class="fas fa-calendar"></i> 2st may, 2024</a>
-              <a href="#"> <i class="fas fa-user"></i> by admin</a>
-            </div>
-            <h3>blog title goes here</h3>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius,
-              asperiores. Aspernatur id reiciendis voluptatum ullam laborum nisi
-              voluptatem doloremque excepturi quam hic ipsum, aliquam magnam
-              magni, similique modi cupiditate velit.
-            </p>
-            <a href="#" class="btn">
-              Plus d'info <span class="fas fa-chevron-right"></span
-            ></a>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="image">
-            <img src="/image/blog.jpg" alt="" />
-          </div>
-          <div class="content">
-            <div class="icon">
-              <a href="#"> <i class="fas fa-calendar"></i> 2st may, 2024</a>
-              <a href="#"> <i class="fas fa-user"></i> by admin</a>
-            </div>
-            <h3>blog title goes here</h3>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius,
-              asperiores. Aspernatur id reiciendis voluptatum ullam laborum nisi
-              voluptatem doloremque excepturi quam hic ipsum, aliquam magnam
-              magni, similique modi cupiditate velit.
-            </p>
-            <a href="#" class="btn">
-              Plus d'info <span class="fas fa-chevron-right"></span
-            ></a>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="image">
-            <img src="/image/blog.jpg" alt="" />
-          </div>
-          <div class="content">
-            <div class="icon">
-              <a href="#"> <i class="fas fa-calendar"></i> 2st may, 2024</a>
-              <a href="#"> <i class="fas fa-user"></i> by admin</a>
-            </div>
-            <h3>blog title goes here</h3>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius,
-              asperiores. Aspernatur id reiciendis voluptatum ullam laborum nisi
-              voluptatem doloremque excepturi quam hic ipsum, aliquam magnam
-              magni, similique modi cupiditate velit.
-            </p>
-            <a href="#" class="btn">
-              Plus d'info <span class="fas fa-chevron-right"></span
-            ></a>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="image">
-            <img src="/image/blog.jpg" alt="" />
-          </div>
-          <div class="content">
-            <div class="icon">
-              <a href="#"> <i class="fas fa-calendar"></i> 2st may, 2024</a>
-              <a href="#"> <i class="fas fa-user"></i> by admin</a>
-            </div>
-            <h3>blog title goes here</h3>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius,
-              asperiores. Aspernatur id reiciendis voluptatum ullam laborum nisi
-              voluptatem doloremque excepturi quam hic ipsum, aliquam magnam
-              magni, similique modi cupiditate velit.
-            </p>
-            <a href="#" class="btn">
-              Plus d'info <span class="fas fa-chevron-right"></span
-            ></a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- blog section end -->
 
     <!-- footer section start -->
 

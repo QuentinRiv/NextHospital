@@ -72,6 +72,7 @@ export async function patientPage(req, res) {
   }
 
   res.render("patient", {
+    user: user.profileType,
     consultations: consultations,
     appointments: appointments, // Envoyer l'ID utilisateur à la vue EJS
     doctors: doctors,
