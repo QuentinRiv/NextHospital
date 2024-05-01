@@ -1,29 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page de Connexion</title>
-    <link rel="stylesheet" href="/css/style.css"> <!-- Assurez-vous que le chemin d'accès est correct -->
-    <link rel="stylesheet" href="/css/login.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-</head>
-<body>
-    <div class="login-container" id="loginForm">
-        <h1 class="heading">Connexion</h1>
-        <form action="/auth/login" method="POST" class="login-form">
-            <div class="form-group">
-                <i class="fa fa-user icon"></i>
-                <input type="email" id="email" name="email" placeholder="Email" required>
+    <!-- Assurez-vous que le chemin d'accès est correct -->
+    <link rel="stylesheet" href="/css/login.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container" id="container">
+      <div class="form-container sign-up">
+        <form>
+            <h1>Create Account</h1>
+            <div class="social-icons">
+                <a href="#" class="icon">
+                    <i class="fa-brands fa-google-plus-g"></i>
+                </a>
+                <a href="#" class="icon">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="#" class="icon">
+                    <i class="fa-brands fa-github"></i>
+                </a>
             </div>
-            <div class="form-group">
-                <i class="fa fa-lock icon"></i>
-                <input type="password" id="password" name="password" placeholder="Mot de passe" required>
-            </div>
-            <button type="submit" class="btn">Se connecter</button>
+            <span>or use your email for registeration</span>
+            <input type="text" placeholder="Name">
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Password">
+            <button>Sign Up</button>
         </form>
+      </div>
+
+      <div class="form-container sign-in">
+        <form>
+            <h1>Log in</h1>
+            <div class="social-icons">
+                <a href="#" class="icon">
+                    <i class="fa-brands fa-google-plus-g"></i>
+                </a>
+                <a href="#" class="icon">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="#" class="icon">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+            </div>
+            <span>or use your email password</span>
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Password">
+            <a href="#">Forget Your Password?</a>
+            <button>Sign In</button>
+        </form>
+      </div>
+      <div class="toggle-container">
+        <div class="toggle">
+            <div class="toggle-panel toggle-left">
+                <h1>Welcome Back!</h1>
+                <p>Enter your personal details to user the site</p>
+                <button class="hidden" id="login">Sign In</button>
+            </div>
+            <div class="toggle-panel toggle-right">
+                <h1>Hello, Friends!</h1>
+                <p>Register your infos</p>
+                <button class="hidden" id="register">Sign Up</button>
+            </div>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 
 <script src="/js/login.js"></script>
 
