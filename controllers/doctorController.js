@@ -34,8 +34,7 @@ export function create(req, res, next) {
       image: req.body.image,
     });
 
-    newDoctor
-      .save()
+    newDoctor.save()
       .then((doctor) => {
         const newUser = new User({
           email: doctor.email,
@@ -44,25 +43,16 @@ export function create(req, res, next) {
           profileId: doctor._id,
         });
 
-        newUser
-          .save()
-          .then(() =>
+        newUser.save()
+        .then(() =>
             res.status(201).json({ message: "Docteur et utilisateur créés !" })
           )
           .catch((error) =>
-            res
-              .status(400)
-              .json({
-                error:
-                  "Erreur lors de la création de l'utilisateur : " +
-                  +error.message,
-              })
+            res.status(400).json({error: "Erreur lors de la création de l'utilisateur : "+error.message,})
           );
       })
       .catch((err) =>
-        res
-          .status(500)
-          .send("Erreur lors de la création du docteur : " + err.message)
+        res.status(500).send("Erreur lors de la création du docteur : " + err.message)
       );
   });
 }

@@ -11,7 +11,6 @@ loginBtn.addEventListener("click", () => {
 });
 
 // Formulaire de connexion
-// prettier-ignore
 document.getElementById("loginForm").addEventListener("submit", async function (event) {
     event.preventDefault();
 
@@ -87,4 +86,60 @@ document
       .catch((error) => {
         console.error("Échec de la connexion :", error.message);
       });
+  });
+
+
+  document.getElementById("signupForm").addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const name = document.getElementById("nameUp").value;
+    const email = document.getElementById("emailUp").value;
+    const password = document.getElementById("passwordUp").value;
+
+    console.log("Name : ", name);
+    console.log("Email : ", email);
+    console.log("Password : ", password);
+    var url = "";
+    var data = {}
+
+    const opt1 = document.getElementById("option-1").checked;
+    if (!opt1) {
+      url = "http://localhost:3000" + "/patient/new";
+
+      data = {
+        name,
+        email,
+        password,
+        assignedDoctor: "662f63ee90f3614b3c0b6f74",
+      }
+    }
+    else {
+      url = "http://localhost:3000" + "/doctor/new";
+
+      data = {
+        doctorName: name,
+        email,
+        password,
+        image: "doc_Ben.jpg"
+      }
+    }
+
+    await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Échec de la connexion => " + response.message);
+        }
+        return response.json();
+      })
+      .catch((error) => {
+        console.error("Erreur :", error);
+      });
+
+      
   });
