@@ -52,7 +52,6 @@ export async function fileList(req, res) {
         });
       }
     });
-    // console.log(filesAndClass);
     res.send(filesAndClass);
   });
 }
@@ -111,7 +110,6 @@ async function createDocumentHierarchy(req, res) {
       }
       await rootFolder.save();
     }
-    console.log("Hierarchy created successfully.");
 
     res.status(201).json({ message: "Hierarchy created successfully !" });
   } catch (error) {

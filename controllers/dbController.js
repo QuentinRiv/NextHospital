@@ -67,7 +67,6 @@ export async function getDoctorInfo(key, value) {
 
 // Obtient toutes les infos d'un user, selon le type de clef
 export async function getUserInfo(key, value) {
-  console.log("getUserInfo", key, value);
   try {
     // Correction de la valeur pour remplacer '%20' par des espaces
     const adjustedValue = value.replace(/%20/g, " ");
@@ -102,8 +101,8 @@ export async function getUserInfo(key, value) {
 }
 
 // Obtient toutes les consultations d'un oatient, selon l'ID
-export async function getConsultations(profileId) {
-  const consultations = await Consultation.find({ patient: profileId });
+export async function getConsultations(key, profileId) {
+  const consultations = await Consultation.find({ [key]: profileId });
   let correct_consultations = [];
 
   for (let i = 0; i < consultations.length; i++) {

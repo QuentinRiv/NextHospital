@@ -6,12 +6,9 @@ import Patient from "../models/Patient.js";
 export async function create(req, res) {
   // Obtentin des ID des docteur et patient
   try {
-    console.log("********* : ", req.body);
     var doctorId = await getDoctorIdByName(req.body.doctorName);
-    console.log("-------", doctorId);
     var patientId = await getPatientIdByName(req.body.patientName);
   } catch (error) {
-    console.log("ERROR", error);
     return res.status(400).json({
       message: "Error (create) : Doctor or patient not found =>" + error,
     });
@@ -82,7 +79,6 @@ export async function random(req, res) {
     } catch (error) {
       return res.status(500).send({ error: error.message });
     }
-    console.log("Docteur et patient en question :", doctorName, patientName);
 
     const categories = ["Checkup", "Conseil", "Urgence"];
     const category = categories[Math.floor(Math.random() * categories.length)];

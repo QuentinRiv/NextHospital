@@ -1,7 +1,20 @@
 import Doctor from "../models/Doctor.js";
+import Patient from "../models/Patient.js";
 import User from "../models/User.js";
-import { join } from "path"; // Assurez-vous que cette ligne est décommentée
-import { getDoctorInfo } from "./dbController.js"; // Ajustez le chemin relatif selon votre structure de répertoire
+import { join, dirname } from "path";
+import { getDoctorInfo } from "./dbController.js";
+import { fileURLToPath } from "url";
+import {
+  getPatientInfo,
+  getRandomDoctor,
+  getUserInfo,
+  getConsultations,
+} from "./dbController.js";
+import { getAppointments } from "./appointmentController.js";
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 import { hash } from "bcrypt";
 const saltRounds = 10; // Par exemple
@@ -54,8 +67,29 @@ export function create(req, res, next) {
   });
 }
 
-export function doctorPage(req, res) {
-  res.sendFile(join(__dirname, "..", "views", "doctorV.html"));
+export async function doctorPage(req, res) {
+  const user = await getUserInfo("_id", req.user);
+
+  if (user.userInfo.profileType != "Doctor") {
+    // Pas un patient ?
+    return res.status(403).send("Not authorised : you are not a doctor...");
+  }
+
+  try {
+    var consultations = await getConsultations('doctor', user.profileType.id); // Consultation
+    var appointments = await getAppointments("doctor", user.profileType.id);
+    var patients = await Patient.find({});
+  } catch (error) {
+    res.status(403).send(error.message);
+  }
+
+
+  res.render("doctor", {
+    user: user.profileType,
+    consultations: consultations,
+    appointments: appointments, // Envoyer l'ID utilisateur à la vue EJS
+    patients: patients,
+  });
 }
 
 // Créatin aléatoire d'un patient au hasard

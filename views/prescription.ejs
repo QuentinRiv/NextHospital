@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prescription Form</title>
+    <link rel="stylesheet" href="/css/prescription.css" />
+    <script
+      src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <span class="big-circle"></span>
+      <img src="img/shape.png" class="square" alt="" />
+      <div class="form">
+        <div class="contact-info">
+          <h3 class="title">Your information</h3>
+          <p class="text">
+            Here are your information that will appear on the prescription
+          </p>
+
+          <div class="info">
+            <div class="information">
+              <i class="fa-solid fa-user-doctor icone"></i>
+              <p id="doctor">Dr. Jean Bonbeurre</p>
+            </div>
+            <div class="information">
+              <i class="fa-solid fa-user-nurse icone"></i>
+              <p id="job">Brain surgeon</p>
+            </div>
+            <div class="information">
+              <i class="fa-solid fa-hospital icone"></i>
+              <p id="hospital">Hopitaux Universitaire de Genève</p>
+            </div>
+          </div>
+
+          <div class="social-media">
+            <p>Other pages</p>
+            <div class="social-icons">
+              <a href="/patient/main">
+                <i class="fa-solid fa-bed"></i>
+              </a>
+              <a href="/doctor/main">
+                <i class="fa-solid fa-user-doctor"></i>
+              </a>
+              <a href="/auth/connect">
+                <i class="fa-solid fa-right-to-bracket"></i>
+              </a>
+              <a href="/document">
+                <i class="fa-solid fa-folder"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <span class="circle one"></span>
+          <span class="circle two"></span>
+
+          <form action="" id="prescriptionForm" autocomplete="off">
+            <h3 class="title">Presciption form</h3>
+            <div class="input-container">
+              <input type="text" name="name" class="input" />
+              <label for="">Patient's name</label>
+              <span>Patient's name</span>
+            </div>
+            <div class="input-container">
+              <input type="date" name="date" class="input" />
+            </div>
+            <div class="input-container textarea">
+              <textarea name="message" class="input"></textarea>
+              <label for="">Message</label>
+              <span>Message</span>
+            </div>
+            <input type="submit" value="Send" class="btn" />
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/prescription.js"></script>
+  </body>
+</html>

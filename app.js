@@ -32,12 +32,14 @@ import userRoutes from "./routes/userRoute.js";
 import consultationRoute from "./routes/consultationRoute.js";
 import appointmentRoute from "./routes/appointmentRoute.js";
 import documentRoute from "./routes/documentRoute.js";
+import prescriptionRoute from "./routes/prescriptionRoute.js";
 app.use("/patient", patientRoutes);
 app.use("/doctor", doctorRoutes);
 app.use("/auth", userRoutes);
 app.use("/consultation", consultationRoute);
 app.use("/appointment", appointmentRoute);
 app.use("/document", documentRoute);
+app.use("/prescription", prescriptionRoute);
 
 // Démarrage du serveur
 const PORT = process.env.PORT || 3000;

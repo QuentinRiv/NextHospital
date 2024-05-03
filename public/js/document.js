@@ -21,7 +21,6 @@ async function loadFiles(path) {
       )}`
     );
     const files = await response.json();
-    console.log("Fichiers et extension :", files);
 
     files.forEach((file) => {
       let div = document.createElement("div");
@@ -88,7 +87,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // On enlève tout
     const lastActive = document.querySelector(".active");
-    console.log("\n=> ", lastActive);
     if (lastActive) lastActive.classList.remove("active");
     const elems = document.querySelectorAll(".info");
     elems.forEach((elem) => {

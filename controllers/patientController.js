@@ -22,7 +22,6 @@ export async function create(req, res) {
     if (!doc) {
       return res.status(500).send("Erreur : docteur non trouvé !");
     }
-    console.log("Success : docteur trouvé : " + doc._id);
 
     // Création du patient
     const newPatient = new Patient({
@@ -64,7 +63,7 @@ export async function patientPage(req, res) {
   }
 
   try {
-    var consultations = await getConsultations(user.profileType.id); // Consultation
+    var consultations = await getConsultations('patient', user.profileType.id); // Consultation
     var appointments = await getAppointments("patient", user.profileType.id);
     var doctors = await Doctor.find({});
   } catch (error) {

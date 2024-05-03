@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Hospital</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+   <!-- header section part -->
+
+    <header class="header">
+
+        <a href="#" class="logo"> <i class="fas fa-heartbeat"></i> Next Hospital</a>
+
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <a href="#outils">Outils</a>
+            <a href="#consultation">Consultation</a>
+            <a href="#doctor">Doctor</a>
+            <a href="#book">Book</a>
+            <a href="#review">Review</a>
+            <a href="/auth/logout">Logout</a>
+        </nav>
+
+        <div id="menu-btn" class="fas fa-bars"></div>
+
+
+    </header>
+
+<!-- home section start -->
+
+<section class="home" id="home">
+
+    <div class="image">
+        <img src="/image/doc.svg" alt="">
+    </div>
+
+    <div class="content">
+        <h3>Bienvenue <%= user.name %></h3>
+        <p>Je promets et je jure d'être fidèle aux lois de l’honneur et de la probité dans l'exercice de la Médecine. Je respecterai toutes les personnes, leur autonomie et leur volonté, sans discrimination. J'interviendrai pour les protéger si elles sont vulnérables ou menacées dans leur intégrité ou leur dignité. Même sous la contrainte, je ne ferai pas usage de mes connaissances contre les lois de l'humanité.</p>
+        <a href="#" class="btn"> Contact us <span class="fas fa-chevron-right"></span></a>
+    </div>
+    <!-- home section end -->
+
+</section>
+
+<!-- icon section start -->
+
+<section class="icons-container">
+
+    <div class="icons">
+        <a href="/document">
+            <i class="fas fa-user-md"></i>
+            <h3>Documents</h3>
+            <p>See all files</p>
+        </a>
+    </div>
+
+    <div class="icons">
+        <a href="/prescription/form">
+            <i class="fas fa-users"></i>
+            <h3>Prescription</h3>
+            <p>Fill a new one</p>
+        </a>
+    </div>
+
+    <div class="icons">
+        <i class="fas fa-procedures"></i>
+        <h3>13</h3>
+        <p>patients hospitalisés</p>
+    </div>
+
+    <div class="icons">
+        <i class="fas fa-hospital"></i>
+        <h3>4.1km</h3>
+        <p>hôpital employeur</p>
+    </div>
+
+
+</section>
+<!-- icon section end -->
+
+
+<!-- outils section start -->
+
+<section class="outils" id="outils">
+    <h1 class="heading">nos <span>outils</span></h1>
+
+    <div class="box-container">
+      <div class="box">
+        <i class="fas fa-notes-medical"></i>
+        <h3>Consultations à distance</h3>
+        <p>
+          Découvrez la commodité des consultations à distance, permettant un
+          accès rapide et efficace aux conseils médicaux depuis le confort de
+          votre domicile.
+        </p>
+        <a href="#" class="btn"
+          >Plus d'info <span class="fas fa-chevron-right"></span
+        ></a>
+      </div>
+
+      <div class="box">
+        <i class="fas fa-ambulance"></i>
+        <h3>Ambulances 24/7</h3>
+        <p>
+          Notre service d'ambulances est disponible 24 heures sur 24, 7 jours
+          sur 7, garantissant une réponse rapide en cas d'urgence.
+        </p>
+        <a href="#" class="btn"
+          >Plus d'info <span class="fas fa-chevron-right"></span
+        ></a>
+      </div>
+
+      <div class="box">
+        <i class="fas fa-user-md"></i>
+        <h3>Docteur.e.s compétent.e.s</h3>
+        <p>
+          Nos professionnel.le.s de santé sont hautement qualifié.e.s et
+          dédié.e.s à fournir des soins exceptionnels avec compassion et
+          expertise.
+        </p>
+        <a href="#" class="btn"
+          >Plus d'info <span class="fas fa-chevron-right"></span
+        ></a>
+      </div>
+
+      <div class="box">
+        <i class="fas fa-pills"></i>
+        <h3>Prescriptions</h3>
+        <p>
+          Obtenez des prescriptions rapidement grâce à nos services efficaces,
+          assurant que vos médicaments soient prêts quand vous en avez besoin.
+        </p>
+        <a href="#" class="btn"
+          >Plus d'info <span class="fas fa-chevron-right"></span
+        ></a>
+      </div>
+
+      <div class="box">
+        <i class="fas fa-procedures"></i>
+        <h3>Chambres au petit soin</h3>
+        <p>
+          Nos chambres sont conçues pour votre confort et bien-être, assurant
+          un environnement paisible pour votre récupération.
+        </p>
+        <a href="#" class="btn"
+          >Plus d'info <span class="fas fa-chevron-right"></span
+        ></a>
+      </div>
+
+      <div class="box">
+        <i class="fas fa-heartbeat"></i>
+        <h3>Soins intensifs</h3>
+        <p>
+          Nos unités de soins intensifs sont équipées des technologies les
+          plus avancées pour fournir des soins spécialisés et continus.
+        </p>
+        <a href="#" class="btn"
+          >Plus d'info <span class="fas fa-chevron-right"></span
+        ></a>
+      </div>
+    </div>
+  </section>
+  <!-- outils section end -->
+
+<!-- patient section start -->
+<section class="consultation" id="consultation">
+    <h1 class="heading">Consultations <span>précédentes</span></h1>
+
+    <div class="box-container">
+      <% for (var i = 0; i < consultations.length; i++) { %>
+      <div class="box">
+        <img src="/image/<%= consultations[i].doctorImg%>" alt="" />
+        <h3><%= consultations[i].patient%></h3>
+        <span><%= consultations[i].category%></span>
+        <div class="share">
+          <a href="#" class="fa-solid fa-calendar-days"></a>
+          <a href="#" class="fa-solid fa-user-doctor"></a>
+          <a href="#" class="fa-solid fa-phone"></a>
+        </div>
+      </div>
+      <% } %>
+
+      <div class="box">
+        <a href="/patient/allconsultations">
+          <img src="/image/seemore.svg" alt="Voir plus" />
+        </a>
+        <h3>Voir plus</h3>
+        <span>123 autres consultations</span>
+      </div>
+    </div>
+  </section>
+  <!-- consultation section end -->
+
+<!-- rendezvous section start -->
+
+<section class="rendezvous" id="rendezvous">
+    <h1 class="heading"><span>Prenez</span> rendez-vous</h1>
+
+    <div class="row" id="bookingForm">
+      <div class="image">
+        <img src="/image/rdvd.jpg" alt="" />
+      </div>
+
+      <form action="/appointment/login" method="POST" class="appmt-form">
+        <h3>Book appointment</h3>
+        <input
+          type="text"
+          placeholder="Votre nom"
+          class="box"
+          id="patientName"
+          value="Liz Ray"
+        />
+        <input
+          type="email"
+          placeholder="Votre email"
+          class="box"
+          id="email"
+          value="ray.liz@email.com"
+        />
+        <select class="box" name="doctorName" id="doctorName">
+          <% for (var i = 0; i < patients.length; i++) { %>
+          <option value="<%= patients[i].name%>"><%= patients[i].name%></option>
+          <% } %>
+        </select>
+
+        <select class="box" name="about" id="about">
+          <option value="Urgence">Urgence</option>
+          <option value="suivi">Suivi</option>
+          <option value="checkup">Checkup</option>
+        </select>
+        <input type="date" class="box" id="date" value="1995-05-17" />
+        <input type="submit" value="Prendre rendez-vous" class="btn" />
+      </form>
+    </div>
+  </section>
+
+  <!-- rendezvous section end -->
+
+<!-- document section start -->
+<section class="document" id="document">
+    <h1 class="heading">Mes <span>documents</span></h1>
+
+    <div class="box-container">
+      <div class="box">
+        <a class="" href="/document">
+          <img src="/image/upload_doc.png" alt="" />
+          <h3>Importer un document</h3>
+          <div class="starts">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <p class="text">
+            Besoin de rajouter un document à votre compte Patient ? Des
+            ordonnances passées ou un dossier de consultation à venir ? C'est
+            par ici !
+          </p>
+        </a>
+      </div>
+
+      <div class="box">
+        <a class="" href="/document">
+          <img src="/image/search_doc.svg" alt="" />
+          <h3>Consulter mes documents</h3>
+          <div class="starts">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <p class="text">
+            Besoin de récuperer une ordonnance ? Votre dossier médical pour
+            votre nouveau médecin ? C'est par ici !
+          </p>
+        </a>
+      </div>
+
+      <div class="box">
+        <a class="" href="/document">
+          <img src="/image/ask_doc.png" alt="" />
+          <h3>Demander un document</h3>
+          <div class="starts">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <p class="text">
+            Un formulaire à remplir ? Un dossier à compléter ? Une ordonnance
+            à renouveler ? C'est par ici !
+          </p>
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- document section end -->
+
+<!-- blog section start -->
+<section class="blogs" id="blogs">
+
+    <h1 class="heading"> our <span>blogs</span></h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <div class="image">
+                <img src="/image/blog.jpg" alt="">
+            </div>
+            <div class="content">
+                <div class="icon">
+                    <a href="#"> <i class="fas fa-calendar"></i> 2st may, 2024</a>
+                    <a href="#"> <i class="fas fa-user"></i> by admin</a>
+                </div>
+                <h3>blog title goes here</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius, asperiores. Aspernatur id reiciendis voluptatum ullam laborum nisi voluptatem doloremque excepturi quam hic ipsum, aliquam magnam magni, similique modi cupiditate velit.</p>
+                <a href="#" class="btn"> learn more <span class="fas fa-chevron-right" ></span></a>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="/image/blog.jpg" alt="">
+            </div>
+            <div class="content">
+                <div class="icon">
+                    <a href="#"> <i class="fas fa-calendar"></i> 2st may, 2024</a>
+                    <a href="#"> <i class="fas fa-user"></i> by admin</a>
+                </div>
+                <h3>blog title goes here</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius, asperiores. Aspernatur id reiciendis voluptatum ullam laborum nisi voluptatem doloremque excepturi quam hic ipsum, aliquam magnam magni, similique modi cupiditate velit.</p>
+                <a href="#" class="btn"> learn more <span class="fas fa-chevron-right" ></span></a>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="/image/blog.jpg" alt="">
+            </div>
+            <div class="content">
+                <div class="icon">
+                    <a href="#"> <i class="fas fa-calendar"></i> 2st may, 2024</a>
+                    <a href="#"> <i class="fas fa-user"></i> by admin</a>
+                </div>
+                <h3>blog title goes here</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius, asperiores. Aspernatur id reiciendis voluptatum ullam laborum nisi voluptatem doloremque excepturi quam hic ipsum, aliquam magnam magni, similique modi cupiditate velit.</p>
+                <a href="#" class="btn"> learn more <span class="fas fa-chevron-right" ></span></a>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="/image/blog.jpg" alt="">
+            </div>
+            <div class="content">
+                <div class="icon">
+                    <a href="#"> <i class="fas fa-calendar"></i> 2st may, 2024</a>
+                    <a href="#"> <i class="fas fa-user"></i> by admin</a>
+                </div>
+                <h3>blog title goes here</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius, asperiores. Aspernatur id reiciendis voluptatum ullam laborum nisi voluptatem doloremque excepturi quam hic ipsum, aliquam magnam magni, similique modi cupiditate velit.</p>
+                <a href="#" class="btn"> learn more <span class="fas fa-chevron-right" ></span></a>
+            </div>
+        </div>
+    </div>
+
+
+
+</section>
+
+<!-- blog section end -->
+
+<!-- footer section start -->
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>Quick links</h3>
+            <a href="#"> <i class="fas fa-chevron-right"></i>home</a>
+            <a href="#"> <i class="fas fa-chevron-right"></i>outils</a>
+            <a href="#"> <i class="fas fa-chevron-right"></i>consultation</a>
+            <a href="#"> <i class="fas fa-chevron-right"></i>doctors</a>
+            <a href="#"> <i class="fas fa-chevron-right"></i>book</a>
+            <a href="#"> <i class="fas fa-chevron-right"></i>review</a>
+            <a href="#"> <i class="fas fa-chevron-right"></i>blogs</a>
+        </div>
+
+        <div class="box">
+            <h3>Nos outils</h3>
+            <a href="#"> <i class="fas fa-chevron-right"></i>dental care</a>
+            <a href="#"> <i class="fas fa-chevron-right"></i>massage therapy</a>
+            <a href="#"> <i class="fas fa-chevron-right"></i>cardiology</a>
+            <a href="#"> <i class="fas fa-chevron-right"></i>diagnosis</a>
+            <a href="#"> <i class="fas fa-chevron-right"></i>ambulance service</a>
+        </div>
+
+        <div class="box">
+            <h3>Contact</h3>
+            <a href="#"> <i class="fas fa-phone"></i> +123-456-789</a>
+            <a href="#"> <i class="fas fa-phone"></i> +111-222-333</a>
+            <a href="#"> <i class="fas fa-envelope"></i> shaikjanas@gmail.com</a>
+            <a href="#"> <i class="fas fa-envelope"></i> shaikjanas@gmail.com</a>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i> Geneve, Switzerland</a>
+        </div>
+
+        <div class="box">
+            <h3>Follow us</h3>
+            <a href="#"> <i class="fab fa-facebook"></i> Facebook</a>
+            <a href="#"> <i class="fab fa-twitter"></i> Twitter</a>
+            <a href="#"> <i class="fab fa-instagram"></i> Instagram</a>
+            <a href="#"> <i class="fab fa-linkedin"></i> linkedin</a>
+            <a href="#"> <i class="fab fa-pinterest"></i> Pinterest</a>
+        </div>
+
+    </div>
+
+    <div class="credit"> created by <span>Quentin</span></div>
+
+</section>
+
+<!-- footer section end -->
+
+
+
+
+
+
+    <script src="/js/scripts.js"></script>
+</body>
+</html>
