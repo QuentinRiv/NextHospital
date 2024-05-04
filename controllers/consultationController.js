@@ -117,9 +117,7 @@ async function getRandomDoctor(info) {
     const randomDoctor = doctors[Math.floor(Math.random() * doctors.length)];
 
     if (info === "all") return randomDoctor;
-    else {
-      return randomDoctor[info];
-    }
+    else return randomDoctor[info];
   } catch (error) {
     throw new Error(
       "Erreur (getRandomDoctor) de base de données lors de la recherche du doctor: " +

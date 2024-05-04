@@ -8,7 +8,7 @@ document.getElementById('bookingForm').addEventListener('submit', function(event
     const doctorName = document.getElementById('doctorName').value;
     const email = document.getElementById('email').value;
     const date = document.getElementById('date').value;
-    var e = document.getElementById("about");
+    const e = document.getElementById("about");
     const about = e.options[e.selectedIndex].value;
 
     // POST à l'API
