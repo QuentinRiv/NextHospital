@@ -131,7 +131,7 @@ Then, you need to clone the project and install all the dependencies
    ```
 4. Enter your API in `config.js`
    ```js
-   const API_KEY = 'ENTER YOUR API';
+   npm run dev
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -140,7 +140,29 @@ Then, you need to clone the project and install all the dependencies
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-_TODO_
+
+First, go to the [signup page](https://localhost:3000/auth/connect), create an account (you can put a fake email address), and login.
+
+<div align="center">
+    <img src="public/image/login.PNG" alt="Login" width="50%" height="50%">
+</div>
+
+According to if you signed up as a Doctor or a Patient, you will be redirected to a new page.
+If you are a Patient, you will be on the patient main page, that sum up all your information :
+* Access to your documents
+* Previous consultations and appointments
+* Booking new ones
+* ...
+
+If you are a Doctor, you will be on the doctor main page, with access to :
+* your patient's info
+* your past and incoming appointments
+* a new page to create Prescriptions
+
+<div align="center">
+  <img src="public/image/prescription_form.PNG" alt="Login" width="50%" height="50%">
+  <img src="public/image/prescription.PNG" alt="Login" width="50%" height="50%">
+</div>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -180,16 +202,6 @@ Don't forget to give the project a star! Thanks again!
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 <!-- CONTACT -->
 ## Contact
 
@@ -204,7 +216,7 @@ Project Link: [https://github.com/QuentinRiv/NextHospital](https://github.com/Qu
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
+Useful links ;)
 
 * [Choose an Open Source License](https://choosealicense.com)
 * [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
