@@ -131,7 +131,7 @@ Then, you need to clone the project and install all the dependencies
    ```
 4. Enter your API in `config.js`
    ```js
-   const API_KEY = 'ENTER YOUR API';
+   npm run dev
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -140,7 +140,8 @@ Then, you need to clone the project and install all the dependencies
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-_TODO_
+
+First, go to the [signup page](localhost:3000/auth/connect), create an account (you can put a fake email address), and login.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
