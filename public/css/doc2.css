@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=inline=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease-in-out;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.whole {
+    background-color: grey;
+    display: flex;
+    /* flex-shrink: ; */
+    width: 100%;
+    height: 1000px;
+}
+
+.left {
+    background-color: rgb(22, 21, 21);
+    height: 100%;
+    width: 20%;
+    max-width: 250px;
+    padding: 10px;
+}
+
+.middle {
+    height: 100%;
+    width: 50%;
+    background-color: #ddd;
+}
+
+.left .logo {
+    width: 100%;
+    height: 25%;
+}
+
+.left .logo img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.left .menu {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+
+.left .menu button {
+    border-radius: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 5px 0;
+    background: none;
+    border: transparent;
+    padding-left: 70px;
+    position: relative;
+}
+
+.left .menu button p {
+    color: white;
+    font-size: larger;
+    text-align: left;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.left .menu button i {
+    color: #817e7e;
+    margin: 0 10px;
+    font-size: 20px;
+    position: absolute;
+    left: 10px; 
+    top: 50%;
+    transform: translateY(-55%);
+}
+
+.left .menu button:hover {
+    background-color: rgba(112, 56, 138, 0.856);
+}
+
+.right {
+    background-color: red;
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.right .right-nav {
+    height: 10%;
+    background-color: rgb(146, 146, 177);
+    text-align: right;
+    padding: 10px;
+    position: relative;
+    right: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: right;
+    align-items: center;
+}
+
+.right .right-nav img {
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.right .right-nav button {
+    margin: 0 10px;
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+    background-color: #cccccc6e;
+    border-radius: 50%;
+}
+
+.right .right-nav button:hover {
+    background-color: #cccccc;
+}
+
+.right .right-nav i {
+    padding: 10px;
+    font-size: 160%; 
+}
+
+.right .fileInfo {
+    height: 90%;
+    background-color: red;
+}
+
+.middle .newfile {
+    background-color: rgb(145, 105, 105); 
+    padding: 15px;
+}
+
+.middle .filegrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+    gap: 1.5rem;
+    padding: 15px;
+}
+
+.middle .filegrid .file {
+    width: 140px;
+    height: 140px;
+    background-color: white;
+    margin: auto;
+    padding: 10px; 
+    border-radius: 10%;
+    position: relative;
+}
+
+.middle .file img {
+    width: 60%;
+    height: auto;
+}
+
+.middle .file p {
+    margin: 10px;
+}
+
+.middle .file::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 65%;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.middle .file:hover {
+    background-color: #887f7f;
+    /* width: 150px;
+    height: 150px; */
+}
+
+.middle .file:hover p {
+    color: white;
+    font-family: "Sedan SC", serif;
+}
+
+.middle .file:hover img {
+    width: 70%;
+}
